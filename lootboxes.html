@@ -1,0 +1,809 @@
+<!--WARNING: This code is awfully laid out so have fun navigating.
+This was made by TheDogz in the October of 2018-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		
+//BOXES OBJECT - has all possible outcomes in some objects
+function openBoxes() {
+	var common =
+	{
+		d100c: {
+			min: 0, 
+			contents: ["<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>3BT</ins>", "<ins class='grey'>4BT</ins>", 
+			"<ins class='grey'>5BT</ins>", "<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>1 Common Box</ins>", 
+			"<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", 
+			"<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>",  "<ins class='grey'>2 Common Boxes</ins>", "<ins class='green'>1 Uncommon Box</ins>"],
+			value: [2, 2, 2, 2, 2, 3, 4, 5, 6, 6, 0, 0, 0, 0, 7, 7, 7, 7, 7, 9, 9, 10, 10, 0, 0],
+			cBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100u: {
+			min: 60, 
+			contents: ["<ins class='green'>1 Uncommon Boxes</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>15BT</ins>", 
+			 "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>",
+			 "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", 
+			 "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", 
+			 "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>","<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>2 Uncommon Boxes</ins>","<ins class='blue'>1 Rare Box</ins>"],
+			value: [0, 13, 13, 13, 13, 13, 15, 15, 15, 15, 19, 19, 19, 19, 19, 19, 19, 19, 19, 21, 21, 21, 21, 0, 0],
+			cBox: [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100r: {
+			min: 85,
+			contents: ["<ins class='blue'>1 Rare Box</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>",
+					"<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>",
+					"<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", 
+					"<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", 
+					"<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>2 Rare Boxes</ins>"],
+			value: [0, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 0],
+			rBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+		},
+			
+		d100e: {
+			min: 95, 
+			contents: ["<ins class='red'>1 Epic Box</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
+					"<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
+					"<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
+					"<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>2 PECs</ins>",
+					"<ins class='red'>2 PECs</ins>", "<ins class='red'>2 PECs</ins>", "<ins class='red'>2 PECs</ins>"],
+			value: [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 0, 0, 0, 0],
+			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "<b class='myth'>Dog Food: Legendaries sell for 30% more (125BT)</b>"
+		} 
+	};
+	
+	var uncommon =
+	{
+		d100c: {
+			min: 0, 
+			contents: ["<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>3BT</ins>", "<ins class='grey'>4BT</ins>", "<ins class='grey'>5BT</ins>", "<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>Empty (6BT)</ins>", 
+			"<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", 
+			"<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Fake PEC (12BT)</ins>", "<ins class='grey'>Fake PEC (12BT)</ins>", 
+			"<ins class='grey'>Fake PEC (12BT)</ins>", "<ins class='grey'>Fake PEC (12BT)</ins>", "<ins class='grey'>2 Common Boxes</ins>", "<ins class='green'>1 Uncommon Box</ins>"],
+			value: [2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 0, 0, 7, 7, 7, 9, 9, 9, 9, 12, 12, 12, 12, 0, 0],
+			cBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100u: {
+			min: 5, 
+			contents: ["<ins class='grey'>3 Common Boxes</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>13BT</ins>", "<ins class='green'>15BT</ins>",  "<ins class='green'>15BT</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", 
+			"<ins class='green'>Rainbow Cookie (19BT)</ins>","<ins class='green'>Rainbow Cookie (19BT)</ins>","<ins class='green'>Rainbow Cookie (19BT)</ins>","<ins class='green'>Rainbow Cookie (19BT)</ins>",
+			"<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", 
+			"<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>Uncommon Box Model (27 BT)</ins>", "<ins class='green'>Uncommon Box Model (27 BT)</ins>", 
+			"<ins class='green'>Uncommon Box Model (27 BT)</ins>", "<ins class='green'>Uncommon Box Model (27 BT)</ins>", "<ins class='green'>2 Uncommon Boxes</ins>", "<ins class='blue'>1 Rare Box</ins>"],
+			value: [0, 13, 13, 15, 15, 19, 19, 19, 19, 19, 21, 21, 21, 21, 21, 24, 24, 24, 24, 27, 27, 27, 27, 0, 0],
+			cBox: [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100r: {
+			min: 50,
+			contents: ["<ins class='blue'>1 Rare Box</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", 
+			"<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Power (37BT))</ins>", "<ins class='blue'>Power (37BT))</ins>", "<ins class='blue'>Power (37BT))</ins>", 
+			"<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", 
+			"<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", 
+			"<ins class='blue'>2 Rare Boxes</ins>"],
+			value: [0, 29, 29, 29, 29, 34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 0],
+			rBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+		},
+			
+		d100e: {
+			min: 80, 
+			contents: ["<ins class='red'>1 Epic Box</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
+			"<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", 
+			"<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", 
+			"<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", 
+			"<ins class='red'>Trout (60BT)</ins>", "<ins class='yellow'>1 Legendary Box</ins>"],
+			value: [0, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 53, 53, 57, 57, 57, 57, 57, 57, 57, 60, 60, 60, 0],
+			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100l: {
+			min: 95, 
+			contents: ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
+			"<b class='yellow'>Collectable: Dogz Thonk</b>"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "<b class='myth'>Dog Collar - Reroll 1 lootbox per week (175 BT)</b>"
+		}
+	};
+	
+	//Rare Box Code
+	var rare = {
+		d100c: {
+			min: 0, 
+			contents: ["<ins class='grey'>1 Common Box</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Confetti (7BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>",
+			"<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>",
+			"<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>2 Common Boxes</ins>",
+			"<ins class='grey'>2 Common Boxes</ins>", "<ins class='grey'>2 Common Boxes</ins>", "<ins class='grey'>2 Common Boxes</ins>", "<ins class='green'>1 Uncommon Box</ins>",
+			"<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>"],
+			value: [0, 7, 7, 7, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			cBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+		},
+			
+		d100u: {
+			min: 5, 
+			contents: ["<ins class='grey'>4 Common Boxes</ins>", "<ins class='green'>15BT</ins>",  "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>",
+			"<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Rainbow Cookie (19BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>",
+			"<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>",
+			"<ins class='green'>Uncommon Box Model (27BT)</ins>","<ins class='green'>Uncommon Box Model (27BT)</ins>","<ins class='green'>Uncommon Box Model (27BT)</ins>","<ins class='green'>Uncommon Box Model (27BT)</ins>",
+			"<ins class='green'>2 Uncommon Boxes</ins>", "<ins class='green'>2 Uncommon Boxes</ins>", "<ins class='blue'>1 Rare Box</ins>"],
+			value: [0, 15, 15, 15, 15, 15, 15, 19, 19, 21, 21, 21, 24, 24, 24, 24, 24, 27, 27, 27, 27, 27, 0, 0, 0],
+			cBox: [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100r: {
+			min: 10,
+			contents: ["<ins class='blue'>1 Rare Box</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", "<ins class='blue'>Top Hat (29BT)</ins>", 
+			"<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Power (37BT)</ins>", 
+			"<ins class='blue'>Power (37BT)</ins>", "<ins class='blue'>Power (37BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", 
+			"<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>Black Square (44BT)</ins>", "<ins class='blue'>Black Square (44BT)</ins>", 
+			"<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>2 Rare Boxes</ins>", "<ins class='red'>1 Epic Box</ins>"],
+			value: [0, 29, 29, 29, 29, 34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 42, 42, 44, 44, 48, 48, 48, 48, 0, 0],
+			rBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0],
+			eBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100e: {
+			min: 60, 
+			contents: ["<ins class='red'>1 Epic Box</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
+			"<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Potato (57BT)</ins>",
+			"<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", 
+			"<ins class='red'>Trout (60BT)</ins>", "<ins class='red'>Trout (60BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>",  "<ins class='red'>Beer Yams (63BT)</ins>",  "<ins class='red'>Beer Yams (63BT)</ins>",
+			"<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='yellow'>1 Legendary Box</ins>"],
+			value: [0, 50, 50, 50, 50, 53, 53, 53, 53, 53, 57, 57, 57, 57, 60, 60, 60, 60, 60, 63, 63, 63, 63, 0, 0],
+			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100l: {
+			min: 85, 
+			contents: ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
+			"<b class='yellow'>Collectable: Dogz Thonk</b>"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "<b class='myth'>Dog Treats - Double Lootboxes from giveaways (250BT)</b>"
+		}
+	};
+	var epic = {
+		d100c: {
+			min: 0, 
+			contents: ["<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Cookie (9BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>Fake PEC (10BT)</ins>", 
+			"<ins class='grey'>Fake PEC (10BT)</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", 
+			"<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", "<ins class='grey'>3 Common Boxes</ins>", 
+			"<ins class='grey'>3 Common Boxes</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>",
+			"<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>", "<ins class='green'>1 Uncommon Box</ins>",
+			"<ins class='green'>1 Uncommon Box</ins>"],
+			value: [9, 9, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			cBox: [0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		},
+			
+		d100u: {
+			min: 1, 
+			contents: ["<ins class='grey'>5 Common Boxes</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>15BT</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", 
+			"<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>Fake RPEC (21BT)</ins>", "<ins class='green'>? (24BT)</ins>", 
+			"<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>? (24BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>", 
+			"<ins class='green'>Uncommon Box Model (27BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>",
+			"<ins class='green'>Uncommon Box Model (27BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>", "<ins class='green'>Uncommon Box Model (27BT)</ins>","<ins class='green'>3 Uncommon Boxes</ins>", "<ins class='blue'>2 Rare Box</ins>"],
+			value: [0, 15, 15, 15, 15, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24, 27, 27, 27, 27, 27, 27, 27, 0, 0],
+			cBox: [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			uBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+		},
+			
+		d100r: {
+			min: 3,
+			contents: ["<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", "<ins class='blue'>Spoon (34BT)</ins>", 
+			"<ins class='blue'>Power (37BT)</ins>", "<ins class='blue'>Power (37BT)</ins>", "<ins class='blue'>Power (37BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", "<ins class='blue'>Meat (40BT)</ins>", 
+			"<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", "<ins class='blue'>White Square (42BT)</ins>", 
+			"<ins class='blue'>Black Square (44BT)</ins>", "<ins class='blue'>Black Square (44BT)</ins>", "<ins class='blue'>Black Square (44BT)</ins>", "<ins class='blue'>Black Square (44BT)</ins>", 
+			"<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", 
+			"<ins class='blue'>3 Rare Boxes</ins>", "<ins class='red'>1 Epic Box</ins>"],
+			value: [34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 42, 42, 42, 42, 44, 44, 44, 44, 48, 48, 48, 48, 48, 0, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+			eBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100e: {
+			min: 20, 
+			contents: ["<ins class='red'>1 Epic Box</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>",
+			"<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Potato (57BT)</ins>",  "<ins class='red'>Potato (57BT)</ins>",  "<ins class='red'>Potato (57BT)</ins>",  "<ins class='red'>Potato (57BT)</ins>",  "<ins class='red'>Potato (57BT)</ins>", 
+			"<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Trout (60BT)</ins>",  "<ins class='red'>Trout (60BT)</ins>",  "<ins class='red'>Trout (60BT)</ins>", 
+			"<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", 
+			"<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", 
+			"<ins class='red'>2 Epic Box</ins>", "<b class='yellow'>Collectable: Generic Thonk (No-Reroll)</b>" , "<ins class='yellow'>1 Legendary Box</ins>"],
+			value: [0, 50, 50, 53, 53, 53, 57, 57, 57, 57, 57, 57, 60, 60, 60, 63, 63, 63, 63, 67, 67, 67, 0, 0, 0],
+			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		},
+			
+		d100l: {
+			min: 75, 
+			contents: ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
+			"<b class='yellow'>Collectable: Dogz Thonk</b>"]
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "<b class='myth'>Dog Leash - 1 free lootbox every day (375BT)</b>"
+		}
+	};
+	var legendary = {		
+		d100r: {
+			min: 0,
+			contents: ["<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", 
+			"<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", "<ins class='blue'>Apple (48BT)</ins>", 
+			"<ins class='blue'>3 Rare Boxes</ins>", "<ins class='blue'>3 Rare Boxes</ins>", "<ins class='blue'>3 Rare Boxes</ins>", "<ins class='blue'>3 Rare Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", 
+			"<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='yellow'>1 Legendary Box</ins>", 
+			"<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", 
+			"<ins class='yellow'>1 Legendary Box</ins> and <ins class='blue'>2 Rare Boxes</ins>"],
+			value: [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			rBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+			eBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+		},
+			
+		d100e: {
+			min: 20, 
+			contents: ["<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", 
+			"<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", 
+			"<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>2 Epic Boxes</ins>", "<ins class='red'>3 Epic Boxes</ins>", 
+			"<ins class='red'>3 Epic Boxes</ins>", "<ins class='red'>3 Epic Boxes</ins>", "<ins class='red'>3 Epic Boxes</ins>", "<ins class='red'>3 Epic Boxes</ins>", "<ins class='yellow'>1 Legendary Box</ins>", 
+			"<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", "<ins class='yellow'>1 Legendary Box</ins>", 
+			"<ins class='yellow'>1 Legendary Box</ins> and <ins class='red'>2 Epic Boxes</ins>"],
+			value: [67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			eBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 2],
+			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+		},
+			
+		d100l: {
+			min: 45, 
+			contents: ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
+			"<b class='yellow'>Collectable: Dogz Thonk</b>"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "<b class='myth'>Cone of Shame - Everything from lootboxes doubled (500BT)</b>"
+		}
+	}
+	
+	/**Variable Declerations*************/
+	var d100;
+	var d25;
+	var item;
+	var itemArray = [];
+	var uncommonItemArray = [];
+	var rareItemArray = [];
+	var epicItemArray = [];
+	var legendaryItemArray = [];
+	var collectArray = [];
+	var total = 0;
+	var cBox = 0;
+	var uBox = 0;
+	var rBox = 0;
+	var eBox = 0;
+	var lBox = 0;
+	var pec = 0;
+	
+	/**Gets text input values as JS Variables*************/
+	
+		var c = document.getElementById("c").value;
+		var u = document.getElementById("u").value;
+		var r = document.getElementById("r").value;
+		var e = document.getElementById("e").value;
+		var l = document.getElementById("l").value;
+	
+	/*****************************************************/
+	/*****************************************************/
+	
+	//Informs user of the number of boxes that are being opened
+	var message = "Opening " + c + " Common, " + u + " Uncommon, " + r + " Rare, " + e + " Epic and " +
+	l + " Legendary Lootboxes...";
+	document.getElementById("opening-msg").innerHTML = message;
+	
+	
+	//Opens Common Boxes
+	for(var i = 0; i < c; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= common.d100m.min){
+			item = (common.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= common.d100e.min){
+			item = (common.d100e.contents[d25]);
+			total = total + common.d100e.value[d25];
+			eBox = eBox + common.d100e.eBox[d25];
+			if (d25 >= 21) {
+				pec = pec + 2
+			}
+			
+		} else if(d100 >= common.d100r.min){
+			item = (common.d100r.contents[d25]);
+			total = total + common.d100r.value[d25];
+			rBox = rBox + common.d100r.rBox[d25];
+			
+		} else if(d100 >= common.d100u.min){
+			item = (common.d100u.contents[d25]);
+			total = total + common.d100u.value[d25];
+			cBox = cBox + common.d100u.cBox[d25];
+			uBox = uBox + common.d100u.uBox[d25];
+			rBox = rBox + common.d100u.rBox[d25];
+			
+		} else {
+			item = (common.d100c.contents[d25]);
+			total = total + common.d100c.value[d25];
+			cBox = cBox + common.d100c.cBox[d25];
+			uBox = uBox + common.d100c.uBox[d25];
+		}
+		itemArray.push(item);
+	}
+	
+	//Opens Uncommon Boxes
+	for(i = 0; i < u; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= uncommon.d100m.min){
+			item = (uncommon.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= uncommon.d100l.min){
+			item = (uncommon.d100l.contents[d25]);
+			collectArray.push(item);
+			
+		} else if(d100 >= uncommon.d100e.min){
+			item = (uncommon.d100e.contents[d25]);
+			total = total + uncommon.d100e.value[d25];
+			eBox = eBox + uncommon.d100e.eBox[d25];
+			lBox = lBox + uncommon.d100e.lBox[d25];
+			
+		} else if(d100 >= uncommon.d100r.min){
+			item = (uncommon.d100r.contents[d25]);
+			total = total + uncommon.d100r.value[d25];
+			rBox = rBox + uncommon.d100r.rBox[d25];
+			
+		} else if(d100 >= uncommon.d100u.min){
+			item = (uncommon.d100u.contents[d25]);
+			total = total + uncommon.d100u.value[d25];
+			cBox = cBox + uncommon.d100u.cBox[d25];
+			uBox = uBox + uncommon.d100u.uBox[d25];
+			rBox = rBox + uncommon.d100u.rBox[d25];
+			
+		} else {
+			item = (uncommon.d100c.contents[d25]);
+			total = total + uncommon.d100c.value[d25];
+			cBox = cBox + uncommon.d100c.cBox[d25];
+			uBox = uBox + uncommon.d100c.uBox[d25];
+		
+		}
+		uncommonItemArray.push(item);
+	}
+	
+	//Opens Rare Boxes
+	for(i = 0; i < r; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= rare.d100m.min){
+			item = (rare.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= rare.d100l.min){
+			item = (rare.d100l.contents[d25]);
+			collectArray.push(item);
+			
+		} else if(d100 >= rare.d100e.min){
+			item = (rare.d100e.contents[d25]);
+			total = total + rare.d100e.value[d25];
+			eBox = eBox + rare.d100e.eBox[d25];
+			lBox = lBox + rare.d100e.lBox[d25];
+			
+		} else if(d100 >= rare.d100r.min){
+			item = (rare.d100r.contents[d25]);
+			total = total + rare.d100r.value[d25];
+			rBox = rBox + rare.d100r.rBox[d25];
+			eBox = eBox + rare.d100r.eBox[d25];
+			
+		} else if(d100 >= rare.d100u.min){
+			item = (rare.d100u.contents[d25]);
+			total = total + rare.d100u.value[d25];
+			cBox = cBox + rare.d100u.cBox[d25];
+			uBox = uBox + rare.d100u.uBox[d25];
+			rBox = rBox + rare.d100u.rBox[d25];
+			
+		} else {
+			item = (rare.d100c.contents[d25]);
+			total = total + rare.d100c.value[d25];
+			cBox = cBox + rare.d100c.cBox[d25];
+			uBox = uBox + rare.d100c.uBox[d25];
+			
+		}
+		rareItemArray.push(item);
+	}
+	
+	//Opens Epic Boxes
+	for(i = 0; i < e; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= epic.d100m.min){
+			item = (epic.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= epic.d100l.min){
+			item = (epic.d100l.contents[d25]);
+			collectArray.push(item);
+			
+		} else if(d100 >= epic.d100e.min){
+			item = (epic.d100e.contents[d25]);
+			total = total + epic.d100e.value[d25];
+			if (d25 == 23) {
+				collectArray.push(item);
+			}
+			lBox = lBox + epic.d100e.lBox[d25];
+			
+		} else if(d100 >= epic.d100r.min){
+			item = (epic.d100r.contents[d25]);
+			total = total + epic.d100r.value[d25];
+			rBox = rBox + epic.d100r.rBox[d25];
+			eBox = eBox + epic.d100r.eBox[d25];
+			
+		} else if(d100 >= epic.d100u.min){
+			item = (epic.d100u.contents[d25]);
+			total = total + epic.d100u.value[d25];
+			cBox = cBox + epic.d100u.cBox[d25];
+			uBox = uBox + epic.d100u.uBox[d25];
+			rBox = rBox + epic.d100u.rBox[d25];
+			
+		} else {
+			item = (epic.d100c.contents[d25]);
+			total = total + epic.d100c.value[d25];
+			cBox = cBox + epic.d100c.cBox[d25];
+			uBox = uBox + epic.d100c.uBox[d25];
+			
+		}
+		epicItemArray.push(item);
+	}
+	
+	//Opens Legendary Boxes
+	for(i = 0; i < l; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= legendary.d100m.min){
+			item = (legendary.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= legendary.d100l.min){
+			item = (legendary.d100l.contents[d25]);
+			collectArray.push(item);
+			
+		} else if(d100 >= legendary.d100e.min){
+			item = (legendary.d100e.contents[d25]);
+			total = total + legendary.d100e.value[d25];
+			eBox = eBox + legendary.d100e.eBox[d25];
+			lBox = lBox + legendary.d100e.lBox[d25];
+			
+		} else {
+			item = (legendary.d100r.contents[d25]);
+			total = total + legendary.d100r.value[d25];
+			rBox = rBox + legendary.d100r.rBox[d25];
+			eBox = eBox + legendary.d100r.eBox[d25];
+			lBox = lBox + legendary.d100r.lBox[d25];
+			
+		}
+		legendaryItemArray.push(item);
+	}
+	
+	document.getElementById("common-items").innerHTML = "You got:";
+	document.getElementById("uncommon-items").innerHTML = "You got:";
+	document.getElementById("rare-items").innerHTML = "You got:";
+	document.getElementById("epic-items").innerHTML = "You got:";
+	document.getElementById("legendary-items").innerHTML = "You got:";
+	document.getElementById("collectSummary").innerHTML = "Collectables:";
+	
+	var itemList = "";
+	var collectList = "";
+
+	for (var j = 0; j < itemArray.length; j++) {
+	   itemList = "<li>" + itemArray[j] + "</li>";
+	   document.getElementById("common-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < uncommonItemArray.length; j++) {
+	   itemList = "<li>" + uncommonItemArray[j] + "</li>";
+	   document.getElementById("uncommon-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < rareItemArray.length; j++) {
+	   itemList = "<li>" + rareItemArray[j] + "</li>";
+	   document.getElementById("rare-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < epicItemArray.length; j++) {
+	   itemList = "<li>" + epicItemArray[j] + "</li>";
+	   document.getElementById("epic-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < legendaryItemArray.length; j++) {
+	   itemList = "<li>" + legendaryItemArray[j] + "</li>";
+	   document.getElementById("legendary-items").innerHTML += itemList;
+	}
+	
+	for (var k = 0; k < collectArray.length; k++) {
+	   collectList = "<br>" + collectArray[k];
+	   document.getElementById("collectSummary").innerHTML += collectList;
+	}
+	
+	document.getElementById("finalValue").innerHTML = "Total: " + total + " BT";
+	
+	document.getElementById("pecs").innerHTML = pec + " PECs";
+	document.getElementById("cBoxes").innerHTML = cBox + " Common Boxes";
+	document.getElementById("uBoxes").innerHTML = uBox + " Uncommon Boxes";
+	document.getElementById("rBoxes").innerHTML = rBox + " Rare Boxes";
+	document.getElementById("eBoxes").innerHTML = eBox + " Epic Boxes";
+	document.getElementById("lBoxes").innerHTML = lBox + " Legendary Boxes";
+
+}
+
+	</script>
+	
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+			
+			body {
+				background-color: #333333;
+				color: white;
+				font-family: 'Averia Sans Libre', sans-serif;
+				padding-right: 1.5%;
+				padding-left: 1.5%;
+			}
+			
+			h1{
+				font-family: 'Boogaloo', cursive;
+				text-align: center;
+				font-size: 400%
+			}
+			
+			h2{
+				font-family: 'Boogaloo', cursive;
+				font-size: 200%
+			}
+			
+			.right-align{
+				text-align: right;
+			}
+			
+			.center{margin: auto;}
+			.text-center{text-align: center}
+			.pad{padding-right: 30%;}
+			
+			h3{font-family: 'Boogaloo', cursive;}
+			
+			.text{font-family: 'Averia Sans Libre', sans-serif;}
+			
+			input[type="text"]{
+				background-color: #333333;
+				color: white;
+			}
+			
+			nav {
+				position: fixed;
+				right: 1.5%;
+				bottom: 10px;
+				color: white;
+			}
+			
+			a{color: white;}
+			a:visited{color: white;}
+			.yellow:visited{color: yellow;}
+			a:hover{color: white;}
+			
+			.warning {
+				color: red;
+			}
+			
+			.grey {
+				color: #888888; 
+				text-decoration: none;
+			}
+			
+			.green {
+				color: #00d60a; 
+				text-decoration: none;
+			}
+			
+			.blue {
+				color: #5154ff; 
+				text-decoration: none;
+			}
+			
+			.red {
+				color: #ff004c; 
+				text-decoration: none;
+			}
+			
+			.yellow {
+				color: #ffff00; 
+				text-decoration: none;
+			}
+
+			.myth {
+				color: red;
+				-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+				-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+				animation-name: rainbow;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+			
+			td.top {vertical-align: top;}
+			table, td {padding: 5px}
+			
+			button {
+				display: block; 
+				margin: 0 auto;
+			}
+			
+			/* Safari 4.0 - 8.0 */
+			@-webkit-keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+
+			@keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		
+	</head>
+
+	<body>
+		<h1>Mass Lootbox Opening - Names</h1>
+		<h2 class='right-align pad'>Coded by TheDogz</h2>
+
+		
+	
+		<div class="row">
+			<table class="center">
+				<tr>
+					<td>Common:</td>
+					<td><input type="text" id="c" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>
+					<td>Uncommon:</td>
+					<td><input type="text" id="u" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Rare:</td>
+					<td><input type="text" id="r" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Epic:</td>
+					<td><input type="text" id="e" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Legendary:</td>
+					<td><input type="text" id="l" value="0" autocomplete="off"><br></td>
+				</tr>
+			</table>
+		</div>
+
+		<button onclick="openBoxes()">Open!</button>
+
+		<div class="text-center">
+			<p class="warning">Inputting large values may cause your browser to freeze and/or crash</p>
+			<a href='reroll.html' class='yellow'>Reroll my collectable thonks!</a>
+			<p id="opening-msg">The Boxes you open will appear here!</p>
+		</div>
+		
+		<div class='row'>
+			<div class='col'>
+				<table>
+					<tr>
+						<td class='top'><h2 class="grey">Common</h2></td>
+						<td><p id="common-items" >The items you recieve from Common Boxes will appear here!</p></td>
+					</tr>
+					<tr>
+						<td class='top'><h2 class="green">Uncommon</h2></td>
+						<td><p id="uncommon-items">The items you recieve from Unommon Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="blue">Rare</h2></td>
+						<td><p id="rare-items">The items you recieve from Rare Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="red">Epic</h2></td>
+						<td><p id="epic-items">The items you recieve from Epic Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="yellow">Legendary</h2></td>
+						<td><p id="legendary-items">The items you recieve from Legendary Boxes will appear here!</p></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class='col right-align'>
+				<h3 id="finalValue" class="text">Total: 0 BT</h3>
+				<h3 class="text" id='pecs'>0 PEC</h3>
+				<h4 class='grey' id='cBoxes'>0 Common Boxes</h4>
+				<h4 class='green' id='uBoxes'>0 Uncommon Boxes</h4>
+				<h4 class='blue' id='rBoxes'>0 Rare Boxes</h4>
+				<h4 class='red' id='eBoxes'>0 Epic Boxes</h4>
+				<h4 class='yellow' id='lBoxes'>0 Legendary Boxes</h4>
+				<h4 id="collectSummary" class="text">Collectables: None</h4>
+			<div>
+			
+		</div>
+		
+		<nav>
+			<h4>Navigation</h4> <a href="index.html">Home</a> | <a href="lootboxes-links.html">Lootbox: Links</a> | <b>Lootbox: Names</b> |  <a href="equipment-links.html">Equipment: Links</a> | <a href="equipment.html">Equipment: Names</a>
+		</nav>
+		
+	</body>
+</html>

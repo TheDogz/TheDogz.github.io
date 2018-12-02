@@ -1,0 +1,689 @@
+<!--WARNING: This code is awfully laid out so have fun navigating.
+This was made by TheDogz in the October of 2018-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		
+//BOXES OBJECT - has all possible outcomes in some objects
+function openBoxes() {
+	var common =
+	{
+		d100c: {
+			min: 0, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505671499089313803/01-05Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671499089313803/01-05Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671499089313803/01-05Trash.png</ins>", "https://cdn.discordapp.com/attachments/415255208248213505/505671499089313803/01-05Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671499089313803/01-05Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671498611294218/06BTs.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671500070649874/07BT.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505671503220572161/08BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671506165104642/09-10Empty.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671506165104642/09-10Empty.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508425965568/11-14CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508425965568/11-14CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508425965568/11-14CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508425965568/11-14CommonBox.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505671508828618762/15-19Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508828618762/15-19Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508828618762/15-19Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508828618762/15-19Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671508828618762/15-19Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671510586032140/20-21Cookie.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505671510586032140/20-21Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671517045260288/22-23FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671517045260288/22-23FakePEC.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505671519062589443/24CommonBox-x2.png", "https://cdn.discordapp.com/attachments/415255208248213505/505671561928376320/25UnommonBox.png"],
+			value: [2, 2, 2, 2, 2, 3, 4, 5, 6, 6, 0, 0, 0, 0, 7, 7, 7, 7, 7, 9, 9, 10, 10, 0, 0]
+		},
+			
+		d100u: {
+			min: 60, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505673000666791937/01UnommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673004777340948/02-06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673004777340948/02-06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673004777340948/02-06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673004777340948/02-06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673004777340948/02-06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673008845684736/07-10BT.png", 
+			 "https://cdn.discordapp.com/attachments/415255208248213505/505673008845684736/07-10BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673008845684736/07-10BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673008845684736/07-10BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png",
+			 "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", 
+			 "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673013413281792/11-19RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673017637208064/20-23FakeRPEC.png", 
+			 "https://cdn.discordapp.com/attachments/415255208248213505/505673017637208064/20-23FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673017637208064/20-23FakeRPEC.png","https://cdn.discordapp.com/attachments/415255208248213505/505673017637208064/20-23FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505673019562131456/24UncommonBox-2x.png","https://cdn.discordapp.com/attachments/415255208248213505/505673024041648138/25RareBox.png"],
+			value: [0, 13, 13, 13, 13, 13, 15, 15, 15, 15, 19, 19, 19, 19, 19, 19, 19, 19, 19, 21, 21, 21, 21, 0, 0]
+		},
+			
+		d100r: {
+			min: 85,
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505673024041648138/25RareBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674073347457083/02-15TopHat.png", 
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", 
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674074798817290/16-24Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674077348954112/25RareBox-2x.png"],
+			value: [0, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 0]
+		},
+			
+		d100e: {
+			min: 95, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505674455654334464/01EpicBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674458212597760/02-15Hibiscus.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674461266051072/16-21Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674464437075968/22-25PEC.png",
+					"https://cdn.discordapp.com/attachments/415255208248213505/505674464437075968/22-25PEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674464437075968/22-25PEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505674464437075968/22-25PEC.png"],
+			value: [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 0, 0, 0, 0]
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "https://cdn.discordapp.com/attachments/415255208248213505/505675431706624010/C100_-_Dog_Food.png"
+		} 
+	};
+	
+	var uncommon =
+	{
+		d100c: {
+			min: 0, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505675988282245130/01-03Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505675988282245130/01-03Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505675988282245130/01-03Trash.png", "https://cdn.discordapp.com/attachments/415255208248213505/505675997622829056/04BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676002987343902/05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676010369581059/06BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676016337813504/07-10Empty.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676016337813504/07-10Empty.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505676016337813504/07-10Empty.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676016337813504/07-10Empty.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676021723299861/11-12CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676021723299861/11-12CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676028623192086/13-15Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676028623192086/13-15Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676028623192086/13-15Confetti.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505676036613210142/16-19Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676036613210142/16-19Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676036613210142/16-19Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676036613210142/16-19Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676042514464769/20-23FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676042514464769/20-23FakePEC.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505676042514464769/20-23FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676042514464769/20-23FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676052551696394/24CommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505676060675801088/25UncommonBox.png"],
+			value: [2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 0, 0, 7, 7, 7, 9, 9, 9, 9, 12, 12, 12, 12, 0, 0]
+		},
+			
+		d100u: {
+			min: 5, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505677852058976257/01CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677859390750721/02-03BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677859390750721/02-03BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677866478862346/04-05BT.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505677866478862346/04-05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677872208412673/06-10RainbowCookie.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505677872208412673/06-10RainbowCookie.png","https://cdn.discordapp.com/attachments/415255208248213505/505677872208412673/06-10RainbowCookie.png","https://cdn.discordapp.com/attachments/415255208248213505/505677872208412673/06-10RainbowCookie.png","https://cdn.discordapp.com/attachments/415255208248213505/505677872208412673/06-10RainbowCookie.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505677880034983959/11-15FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677880034983959/11-15FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677880034983959/11-15FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677880034983959/11-15FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677880034983959/11-15FakeRPEC.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505677883792949263/16-19QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677883792949263/16-19QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677883792949263/16-19QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677883792949263/16-19QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677889123909642/20-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677889123909642/20-23UncommonBoxModel.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505677889123909642/20-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677889123909642/20-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677896099168256/24UncommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505677903317696513/25RareBox.png"],
+			value: [0, 13, 13, 15, 15, 19, 19, 19, 19, 19, 21, 21, 21, 21, 21, 24, 24, 24, 24, 27, 27, 27, 27, 0, 0]
+		},
+			
+		d100r: {
+			min: 50,
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505677903317696513/25RareBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680748368494613/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680748368494613/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680748368494613/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680748368494613/02-05TopHat.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505680751086403594/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680751086403594/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680751086403594/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680751086403594/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680753632215040/10-12Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680753632215040/10-12Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680753632215040/10-12Power.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680754252972032/13-19Meat.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505680755758727188/20-24WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680755758727188/20-24WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680755758727188/20-24WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680755758727188/20-24WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505680755758727188/20-24WhiteSquare.png", 
+			"https://media.discordapp.net/attachments/415255208248213505/505680760607473664/25RareBox-2x.png"],
+			value: [0, 29, 29, 29, 29, 34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 0]
+		},
+			
+		d100e: {
+			min: 80, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505681676295471124/01EpicBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681680745627659/02-06Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681680745627659/02-06Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681680745627659/02-06Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681680745627659/02-06Hibiscus.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505681680745627659/02-06Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681709937721344/07-14Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681719656054784/15-21Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681722420101151/22-24Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681722420101151/22-24Trout.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505681722420101151/22-24Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505681728015302657/25LegendaryBox.png"],
+			value: [0, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 53, 53, 57, 57, 57, 57, 57, 57, 57, 60, 60, 60, 0]
+		},
+			
+		d100l: {
+			min: 95, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683165277323264/25_Dogz.png"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "https://cdn.discordapp.com/attachments/415255208248213505/505683652345200661/U100_-_Dog_Collar.png"
+		}
+	};
+	
+	//Rare Box Code
+	var rare = {
+		d100c: {
+			min: 0, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505684921457573899/01CommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684924322414602/02-04Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684924322414602/02-04Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684924322414602/02-04Confetti.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926402920449/05-07Chocolate_Chip.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926402920449/05-07Chocolate_Chip.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505684926402920449/05-07Chocolate_Chip.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684926478155776/08-15FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684935227473920/16-19CommonBox-2x.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505684935227473920/16-19CommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684935227473920/16-19CommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684935227473920/16-19CommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505684936746074112/20-25UncommonBox.png"],
+			value: [0, 7, 7, 7, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		},
+			
+		d100u: {
+			min: 5, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505685838349205515/01CommonBox-4x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685851922235412/02-07BT.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505685858083667968/08-09RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685858083667968/08-09RainbowCookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685865461448704/10-12FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685865461448704/10-12FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685865461448704/10-12FakeRPEC.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505685868221038603/13-17QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685868221038603/13-17QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685868221038603/13-17QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685868221038603/13-17QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685868221038603/13-17QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685871811362826/18-22UncommonBoxModel.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505685871811362826/18-22UncommonBoxModel.png","https://cdn.discordapp.com/attachments/415255208248213505/505685871811362826/18-22UncommonBoxModel.png","https://cdn.discordapp.com/attachments/415255208248213505/505685871811362826/18-22UncommonBoxModel.png","https://cdn.discordapp.com/attachments/415255208248213505/505685871811362826/18-22UncommonBoxModel.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505685889033175040/23-24UncommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685889033175040/23-24UncommonBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505685892208394241/25RareBox.png"],
+			value: [0, 15, 15, 15, 15, 15, 15, 19, 19, 21, 21, 21, 24, 24, 24, 24, 24, 27, 27, 27, 27, 27, 0, 0, 0]
+		},
+			
+		d100r: {
+			min: 10,
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505685892208394241/25RareBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686933528248320/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686933528248320/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686933528248320/02-05TopHat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686933528248320/02-05TopHat.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505686953891594272/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686953891594272/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686953891594272/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686953891594272/06-09Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686956890521600/10-12Power.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505686956890521600/10-12Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686956890521600/10-12Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686959922872320/13-15Meant.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686959922872320/13-15Meant.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686959922872320/13-15Meant.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505686996069384193/16-17WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505686996069384193/16-17WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687012389552129/18-19BlackSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687012389552129/18-19BlackSquare.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505687024913743883/20-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687024913743883/20-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687024913743883/20-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687024913743883/20-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687032048386053/24RareBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505687031796596755/25EpicBox.png"],
+			value: [0, 29, 29, 29, 29, 34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 42, 42, 44, 44, 48, 48, 48, 48, 0, 0]
+		},
+			
+		d100e: {
+			min: 60, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505687031796596755/25EpicBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688081563648012/02-05Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688081563648012/02-05Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688081563648012/02-05Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688081563648012/02-05Hibiscus.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505688082696372224/06-10Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688082696372224/06-10Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688082696372224/06-10Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688082696372224/06-10Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688082696372224/06-10Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688085653225473/11-14Potato.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505688085653225473/11-14Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688085653225473/11-14Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688085653225473/11-14Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688098563162113/15-19Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688098563162113/15-19Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688098563162113/15-19Trout.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505688098563162113/15-19Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688098563162113/15-19Trout.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688113461592086/20-23BeerYams.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505688113461592086/20-23BeerYams.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505688113461592086/20-23BeerYams.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505688113461592086/20-23BeerYams.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688116716240897/24EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505688119182622730/25LegendaryBox.png"],
+			value: [0, 50, 50, 50, 50, 53, 53, 53, 53, 53, 57, 57, 57, 57, 60, 60, 60, 60, 60, 63, 63, 63, 63, 0, 0]
+		},
+			
+		d100l: {
+			min: 85, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683165277323264/25_Dogz.png"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "https://cdn.discordapp.com/attachments/415255208248213505/505689798443532298/R100_-_Dog_Treats.png"
+		}
+	};
+	var epic = {
+		d100c: {
+			min: 0, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505689910808936459/01-02Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689910808936459/01-02Cookie.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689917188472842/03-05FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689917188472842/03-05FakePEC.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505689917188472842/03-05FakePEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505689916680830996/06-15CommonBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505689921760133130/16-25Uncommon.png"],
+			value: [9, 9, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		},
+			
+		d100u: {
+			min: 1, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505690426485899264/01CommonBox-5x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690429577232386/02-05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690429577232386/02-05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690429577232386/02-05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690429577232386/02-05BT.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690433486323712/06-10FakeRPEC.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690435168108565/11-16QuestionMark.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690441325215750/17-23UncommonBoxModel.png","https://cdn.discordapp.com/attachments/415255208248213505/505690443007131665/24Uncommon-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505690443464441858/25RareBox-2x.png"],
+			value: [0, 15, 15, 15, 15, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24, 27, 27, 27, 27, 27, 27, 27, 0, 0]
+		},
+			
+		d100r: {
+			min: 3,
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505691864440242176/01-04Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691864440242176/01-04Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691864440242176/01-04Spoon.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691864440242176/01-04Spoon.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505691872971456514/05-07Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691872971456514/05-07Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691872971456514/05-07Power.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691883717263374/08-10Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691883717263374/08-10Meat.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691883717263374/08-10Meat.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505691891149438976/11-14WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691891149438976/11-14WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691891149438976/11-14WhiteSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691891149438976/11-14WhiteSquare.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505691895935270923/15-18BlackSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691895935270923/15-18BlackSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691895935270923/15-18BlackSquare.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691895935270923/15-18BlackSquare.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505691901597450241/19-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691901597450241/19-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691901597450241/19-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691901597450241/19-23Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691901597450241/19-23Apple.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505691907414949889/24RareBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505691913639165952/25EpicBox.png"],
+			value: [34, 34, 34, 34, 37, 37, 37, 40, 40, 40, 42, 42, 42, 42, 44, 44, 44, 44, 48, 48, 48, 48, 48, 0, 0]
+		},
+			
+		d100e: {
+			min: 20, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505691913639165952/25EpicBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692710712246282/02-03Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692710712246282/02-03Hibiscus.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692739011346442/04-06Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692739011346442/04-06Flan.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505692739011346442/04-06Flan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505692741787713546/07-12Potato.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692744451096586/13-15Trout.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692744451096586/13-15Trout.png",  "https://cdn.discordapp.com/attachments/415255208248213505/505692744451096586/13-15Trout.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505692747286446081/16-19BeerYams.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692747286446081/16-19BeerYams.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692747286446081/16-19BeerYams.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692747286446081/16-19BeerYams.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505692749526204449/20-22NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692749526204449/20-22NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692749526204449/20-22NonPotableWater.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505692753238163457/23EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505692758485237769/24GenericThonk-NoReroll.png" , "https://cdn.discordapp.com/attachments/415255208248213505/505692766815256606/25LegendaryBox.png"],
+			value: [0, 50, 50, 53, 53, 53, 57, 57, 57, 57, 57, 57, 60, 60, 60, 63, 63, 63, 63, 67, 67, 67, 0, 0, 0]
+		},
+			
+		d100l: {
+			min: 75, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683165277323264/25_Dogz.png"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "https://cdn.discordapp.com/attachments/415255208248213505/505693476810129431/E100_-_Dog_Leash.png"
+		}
+	};
+	var legendary = {		
+		d100r: {
+			min: 0,
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693584612130826/01-10Apple.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693586957008897/11-14RareBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693586957008897/11-14RareBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693586957008897/11-14RareBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693586957008897/11-14RareBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693595005616143/25BoxBundle.png"],
+			value: [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		},
+			
+		d100e: {
+			min: 20, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694139006976000/1-10NonPotableWater.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693590085959682/15-19EpicBox-2x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694141536272404/15-19EpicBox-3x.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505694141536272404/15-19EpicBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694141536272404/15-19EpicBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694141536272404/15-19EpicBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505694141536272404/15-19EpicBox-3x.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", "https://cdn.discordapp.com/attachments/415255208248213505/505693591772069899/20-24LegendaryBox.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505694141842456577/25BoxBundle.png"],
+			value: [67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		},
+			
+		d100l: {
+			min: 45, 
+			contents: ["https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png",
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683149729300490/01-10_Generic_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683154070274068/11-17_Cheers_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683157014806530/18-21_Pika_Thonk.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", "https://cdn.discordapp.com/attachments/415255208248213505/505683161712295946/22_-24_Dan.png", 
+			"https://cdn.discordapp.com/attachments/415255208248213505/505683165277323264/25_Dogz.png"],
+		},
+			
+		d100m: {
+			min: 99, 
+			contents: "https://cdn.discordapp.com/attachments/415255208248213505/505694364597485588/L100_-_Cone_of_Shame.png"
+		}
+	}
+	
+	/**Variable Declerations*************/
+	var d100;
+	var d25;
+	var item;
+	var itemArray = [];
+	var uncommonItemArray = [];
+	var rareItemArray = [];
+	var epicItemArray = [];
+	var legendaryItemArray = [];
+	var collectArray = [];
+	var total = 0;
+	
+	/**Gets text input values as JS Variables*************/
+	
+		var c = document.getElementById("c").value;
+		var u = document.getElementById("u").value;
+		var r = document.getElementById("r").value;
+		var e = document.getElementById("e").value;
+		var l = document.getElementById("l").value;
+	
+	/*****************************************************/
+	/*****************************************************/
+	
+	//Informs user of the number of boxes that are being opened
+	var message = "Opening " + c + " Common, " + u + " Uncommon, " + r + " Rare, " + e + " Epic and " +
+	l + " Legendary Lootboxes...";
+	document.getElementById("opening-msg").innerHTML = message;
+	
+	
+	//Opens Common Boxes
+	for(var i = 0; i < c; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= common.d100m.min){
+			item = (common.d100m.contents);
+			
+		} else if(d100 >= common.d100e.min){
+			item = (common.d100e.contents[d25]);
+			total = total + common.d100e.value[d25];
+			
+		} else if(d100 >= common.d100r.min){
+			item = (common.d100r.contents[d25]);
+			total = total + common.d100r.value[d25];
+			
+		} else if(d100 >= common.d100u.min){
+			item = (common.d100u.contents[d25]);
+			total = total + common.d100u.value[d25];
+			
+		} else {
+			item = (common.d100c.contents[d25]);
+			total = total + common.d100c.value[d25];
+			
+		}
+		itemArray.push(item);
+	}
+	
+	//Opens Uncommon Boxes
+	for(i = 0; i < u; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= uncommon.d100m.min){
+			item = (uncommon.d100m.contents);
+			
+		} else if(d100 >= uncommon.d100l.min){
+			item = (uncommon.d100l.contents[d25]);
+			
+		} else if(d100 >= uncommon.d100e.min){
+			item = (uncommon.d100e.contents[d25]);
+			total = total + uncommon.d100e.value[d25];
+			
+		} else if(d100 >= uncommon.d100r.min){
+			item = (uncommon.d100r.contents[d25]);
+			total = total + uncommon.d100r.value[d25];
+			
+		} else if(d100 >= uncommon.d100u.min){
+			item = (uncommon.d100u.contents[d25]);
+			total = total + uncommon.d100u.value[d25];
+			
+		} else {
+			item = (uncommon.d100c.contents[d25]);
+			total = total + uncommon.d100c.value[d25];
+			
+		}
+		uncommonItemArray.push(item);
+	}
+	
+	//Opens Rare Boxes
+	for(i = 0; i < r; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= rare.d100m.min){
+			item = (rare.d100m.contents);
+			
+		} else if(d100 >= rare.d100l.min){
+			item = (rare.d100l.contents[d25]);
+			
+		} else if(d100 >= rare.d100e.min){
+			item = (rare.d100e.contents[d25]);
+			total = total + rare.d100e.value[d25];
+			
+		} else if(d100 >= rare.d100r.min){
+			item = (rare.d100r.contents[d25]);
+			total = total + rare.d100r.value[d25];
+			
+		} else if(d100 >= rare.d100u.min){
+			item = (rare.d100u.contents[d25]);
+			total = total + rare.d100u.value[d25];
+			
+		} else {
+			item = (rare.d100c.contents[d25]);
+			total = total + rare.d100c.value[d25];
+			
+		}
+		rareItemArray.push(item);
+	}
+	
+	//Opens Epic Boxes
+	for(i = 0; i < e; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= epic.d100m.min){
+			item = (epic.d100m.contents);
+			
+		} else if(d100 >= epic.d100l.min){
+			item = (epic.d100l.contents[d25]);
+			
+		} else if(d100 >= epic.d100e.min){
+			item = (epic.d100e.contents[d25]);
+			total = total + epic.d100e.value[d25];
+			
+		} else if(d100 >= epic.d100r.min){
+			item = (epic.d100r.contents[d25]);
+			total = total + epic.d100r.value[d25];
+			
+		} else if(d100 >= epic.d100u.min){
+			item = (epic.d100u.contents[d25]);
+			total = total + epic.d100u.value[d25];
+			
+		} else {
+			item = (epic.d100c.contents[d25]);
+			total = total + epic.d100c.value[d25];
+			
+		}
+		epicItemArray.push(item);
+	}
+	
+	//Opens Legendary Boxes
+	for(i = 0; i < l; i++){
+		d100 = Math.floor(Math.random() * 100); //Random 0-99
+		d25 = Math.floor(Math.random() * 25); //Random 0-24
+		
+		if(d100 >= legendary.d100m.min){
+			item = (legendary.d100m.contents);
+			collectArray.push(item);
+			
+		} else if(d100 >= legendary.d100l.min){
+			item = (legendary.d100l.contents[d25]);
+			collectArray.push(item);
+			
+		} else if(d100 >= legendary.d100e.min){
+			item = (legendary.d100e.contents[d25]);
+			total = total + legendary.d100e.value[d25];
+		} else {
+			item = (legendary.d100r.contents[d25]);
+			total = total + legendary.d100r.value[d25];
+			
+		}
+		legendaryItemArray.push(item);
+	}
+	
+	document.getElementById("common-items").innerHTML = "You got:";
+	document.getElementById("uncommon-items").innerHTML = "You got:";
+	document.getElementById("rare-items").innerHTML = "You got:";
+	document.getElementById("epic-items").innerHTML = "You got:";
+	document.getElementById("legendary-items").innerHTML = "You got:";
+	
+	var itemList = "";
+
+	for (var j = 0; j < itemArray.length; j++) {
+	   itemList = "<li>" + itemArray[j] + "</li>";
+	   document.getElementById("common-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < uncommonItemArray.length; j++) {
+	   itemList = "<li>" + uncommonItemArray[j] + "</li>";
+	   document.getElementById("uncommon-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < rareItemArray.length; j++) {
+	   itemList = "<li>" + rareItemArray[j] + "</li>";
+	   document.getElementById("rare-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < epicItemArray.length; j++) {
+	   itemList = "<li>" + epicItemArray[j] + "</li>";
+	   document.getElementById("epic-items").innerHTML += itemList;
+	}
+	
+	for (j = 0; j < legendaryItemArray.length; j++) {
+	   itemList = "<li>" + legendaryItemArray[j] + "</li>";
+	   document.getElementById("legendary-items").innerHTML += itemList;
+	}
+	
+	document.getElementById("finalValue").innerHTML = "Total: " + total + " BT";
+
+}
+
+	</script>
+	
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+			
+			body {
+				background-color: #333333;
+				color: white;
+				font-family: 'Averia Sans Libre', sans-serif;
+				padding-right: 1.5%;
+				padding-left: 1.5%;
+			}
+			
+			h1{
+				font-family: 'Boogaloo', cursive;
+				text-align: center;
+				font-size: 400%
+			}
+			
+			h2{
+				font-family: 'Boogaloo', cursive;
+				font-size: 200%
+			}
+			
+			.right-align{
+				text-align: right;
+			}
+			
+			.center{margin: auto;}
+			.text-center{text-align: center}
+			.pad{padding-right: 30%;}
+			
+			h3{font-family: 'Boogaloo', cursive;}
+			
+			.text{font-family: 'Averia Sans Libre', sans-serif;}
+			
+			input[type="text"]{
+				background-color: #333333;
+				color: white;
+			}
+			
+			nav {
+				position: fixed;
+				right: 1.5%;
+				bottom: 10px;
+				color: white;
+			}
+			
+			a{color: white;}
+			a:visited{color: white;}
+			
+			.warning {
+				color: red;
+			}
+			
+			.grey {
+				color: #888888; 
+				text-decoration: none;
+			}
+			
+			.green {
+				color: #00d60a; 
+				text-decoration: none;
+			}
+			
+			.blue {
+				color: #5154ff; 
+				text-decoration: none;
+			}
+			
+			.red {
+				color: #ff004c; 
+				text-decoration: none;
+			}
+			
+			.yellow {
+				color: #ffff00; 
+				text-decoration: none;
+			}
+
+			.myth {
+				color: red;
+				-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+				-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+				animation-name: rainbow;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+			
+			td.top {vertical-align: top;}
+			table, td {padding: 5px}
+			
+			button {
+				display: block; 
+				margin: 0 auto;
+			}
+			
+			/* Safari 4.0 - 8.0 */
+			@-webkit-keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+
+			@keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		
+	</head>
+
+	<body>
+		<h1>Mass Lootbox Opening - Links</h1>
+		<h2 class='right-align pad'>Coded by TheDogz</h2>
+	
+		<div class="row">
+			<table class="center">
+				<tr>
+					<td>Common:</td>
+					<td><input type="text" id="c" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>
+					<td>Uncommon:</td>
+					<td><input type="text" id="u" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Rare:</td>
+					<td><input type="text" id="r" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Epic:</td>
+					<td><input type="text" id="e" value="0" autocomplete="off"><br></td>
+				</tr>
+				<tr>	
+					<td>Legendary:</td>
+					<td><input type="text" id="l" value="0" autocomplete="off"><br></td>
+				</tr>
+			</table>
+		</div>
+
+		<button onclick="openBoxes()">Open!</button>
+
+		<div class="text-center">
+			<p class="warning">Inputting large values may cause your browser to freeze and/or crash</p>
+			<p id="opening-msg">The Boxes you open will appear here!</p>
+		</div>
+		
+		<div class='row'>
+			<div class='col-9'>
+				<table>
+					<tr>
+						<td class='top'><h2 class="grey">Common</h2></td>
+						<td><p id="common-items" >The items you recieve from Common Boxes will appear here!</p></td>
+					</tr>
+					<tr>
+						<td class='top'><h2 class="green">Uncommon</h2></td>
+						<td><p id="uncommon-items">The items you recieve from Unommon Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="blue">Rare</h2></td>
+						<td><p id="rare-items">The items you recieve from Rare Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="red">Epic</h2></td>
+						<td><p id="epic-items">The items you recieve from Epic Boxes will appear here!</p></td>
+					</tr>
+					<tr>	
+						<td class='top'><h2 class="yellow">Legendary</h2></td>
+						<td><p id="legendary-items">The items you recieve from Legendary Boxes will appear here!</p></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class='col-3'>
+				<h3 id="finalValue" class="text right-align">Total: 0 BT</h3>
+			<div>
+			
+		</div>
+		
+		<nav>
+			<h4>Navigation</h4> <a href="index.html">Home</a> | <b>Lootbox: Links</b> | <a href="lootboxes.html">Lootbox: Names</a> | <a href="equipment-links.html">Equipment: Links</a> | <a href="equipment.html">Equipment: Names</a>
+		</nav>
+		
+	</body>
+</html>

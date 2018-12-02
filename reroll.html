@@ -1,0 +1,150 @@
+<!--WARNING: This code is awfully laid out so have fun navigating.
+This was made by TheDogz in the October of 2018-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		
+//BOXES OBJECT - has all possible outcomes in some objects
+function openBoxes() {
+
+	var l = document.getElementById("l").value;
+	document.getElementById("legendary-items").innerHTML = "";
+	
+	for (i = 0; i < l; i++) {
+	    var thonk = ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
+			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
+			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
+			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
+			"<b class='yellow'>Collectable: Dogz Thonk</b>"]
+		var d25 = Math.floor(Math.random() * 25); //Random 0-24
+			
+	   document.getElementById("legendary-items").innerHTML += "<li>" + thonk[d25] + "</li>";
+	}
+}
+
+	</script>
+	
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+			
+			body {
+				background-color: #333333;
+				color: white;
+				font-family: 'Averia Sans Libre', sans-serif;
+				padding-right: 1.5%;
+				padding-left: 1.5%;
+			}
+			
+			h1{
+				font-family: 'Boogaloo', cursive;
+				text-align: center;
+				font-size: 400%
+			}
+			
+			h2{
+				font-family: 'Boogaloo', cursive;
+				font-size: 200%
+			}
+			
+			nav {
+				position: fixed;
+				right: 1.5%;
+				bottom: 10px;
+				color: white;
+			}
+			
+			a{color: white;}
+			a:visited{color: white;}
+			a:hover{color: white;}
+			.yellow:visited{color: yellow;}
+			.yellow:hover{color: white;}
+			
+			.right-align{
+				text-align: right;
+			}
+			
+			.center{margin: auto;}
+			.text-center{text-align: center}
+			.pad{padding-right: 30%;}
+			
+			h3{font-family: 'Boogaloo', cursive;}
+			
+			.text{font-family: 'Averia Sans Libre', sans-serif;}
+			
+			input[type="text"]{
+				background-color: #333333;
+				color: white;
+			}
+			
+			.warning {
+				color: red;
+			}
+			
+			.yellow {
+				color: #ffff00; 
+				text-decoration: none;
+			}
+			
+			td.top {vertical-align: top;}
+			table, td {padding: 5px}
+			
+			button {
+				display: block; 
+				margin: 0 auto;
+			}
+			
+			input { 
+				text-align: center; 
+			}
+			
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		
+	</head>
+
+	<body>
+		<h1>Collectable Thonk Re-roll</h1>
+		<h2 class='right-align pad'>Coded by TheDogz</h2>
+	
+		<div class="row">
+			<table class="center">
+				<tr>
+					<td>Rolling</td>
+					<td><input type="text" id="l" value="0" size='1' maxlength='2' autocomplete="off"></td>
+					<td>Thonks...</td>
+				</tr>
+			</table>
+		</div>
+
+		<button onclick="openBoxes()">Roll!</button>
+
+		<div class="text-center">
+			<p class="warning">Inputting large values may cause your browser to freeze and/or crash</p>
+			<a href='lootboxes.html' class='yellow'><h3>Take me back to Boxes!</h3></a>
+			<p id="opening-msg">The Boxes you open will appear here!</p>
+		</div>
+		
+		<div class='row'>
+			<div class='col'>
+				<table>
+					<tr>	
+						<td class='top'><h2>You Got:</h2></td>
+						<td><p id="legendary-items">The Thonks you re-roll will appear here!</p></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<nav>
+			<h4>Navigation</h4> <a href="index.html">Home</a> | <a href="lootboxes-links.html">Lootbox: Links</a> | <a href="lootboxes.html">Lootbox: Names</a> |  <a href="equipment-links.html">Equipment: Links</a> | <a href="equipment.html">Equipment: Names</a>
+		</nav>
+		
+	</body>
+</html>
