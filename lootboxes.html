@@ -341,6 +341,10 @@ function openBoxes() {
 		var r = document.getElementById("r").value;
 		var e = document.getElementById("e").value;
 		var l = document.getElementById("l").value;
+		var boosterPercent = document.getElementById("booster").value;
+		var booster = boosterPercent / 100;
+		var coneOfShame = document.getElementById("CoS").value;
+		var coneBoost = Math.pow(2, coneOfShame);
 	
 	/*****************************************************/
 	/*****************************************************/
@@ -586,9 +590,18 @@ function openBoxes() {
 	   document.getElementById("collectSummary").innerHTML += collectList;
 	}
 	
+	total = Math.round(total * booster * coneBoost);
 	document.getElementById("finalValue").innerHTML = "Total: " + total + " BT";
 	
+	pec = Math.round(pec * booster * coneBoost);
 	document.getElementById("pecs").innerHTML = pec + " PECs";
+	
+	cBox = cBox * coneBoost;
+	uBox = uBox * coneBoost;
+	rBox = rBox * coneBoost;
+	eBox = eBox * coneBoost;
+	lBox = lBox * coneBoost;
+	
 	document.getElementById("cBoxes").innerHTML = cBox + " Common Boxes";
 	document.getElementById("uBoxes").innerHTML = uBox + " Uncommon Boxes";
 	document.getElementById("rBoxes").innerHTML = rBox + " Rare Boxes";
@@ -622,6 +635,10 @@ function openBoxes() {
 				font-size: 200%
 			}
 			
+			input {
+				text-align: center;
+			}
+			
 			.right-align{
 				text-align: right;
 			}
@@ -641,9 +658,12 @@ function openBoxes() {
 			
 			nav {
 				position: fixed;
-				right: 1.5%;
-				bottom: 10px;
+				margin: 5% auto;
+				left: 0;
+				right: 0;
+				bottom: -80px;
 				color: white;
+				text-align: center;
 			}
 			
 			a{color: white;}
@@ -725,7 +745,7 @@ function openBoxes() {
 
 	<body>
 		<h1>Mass Lootbox Opening - Names</h1>
-		<h2 class='right-align pad'>Coded by TheDogz</h2>
+		<h2 class='right-align pad'>TheDogz made this.</h2>
 
 		
 	
@@ -733,23 +753,31 @@ function openBoxes() {
 			<table class="center">
 				<tr>
 					<td>Common:</td>
-					<td><input type="text" id="c" value="0" autocomplete="off"><br></td>
+					<td><input type="text" id="c" value="0" autocomplete="off" size='5'><br></td>
 				</tr>
 				<tr>
 					<td>Uncommon:</td>
-					<td><input type="text" id="u" value="0" autocomplete="off"><br></td>
+					<td><input type="text" id="u" value="0" autocomplete="off" size='5'><br></td>
 				</tr>
 				<tr>	
 					<td>Rare:</td>
-					<td><input type="text" id="r" value="0" autocomplete="off"><br></td>
+					<td><input type="text" id="r" value="0" autocomplete="off" size='5'><br></td>
 				</tr>
 				<tr>	
 					<td>Epic:</td>
-					<td><input type="text" id="e" value="0" autocomplete="off"><br></td>
+					<td><input type="text" id="e" value="0" autocomplete="off" size='5'><br></td>
 				</tr>
 				<tr>	
 					<td>Legendary:</td>
-					<td><input type="text" id="l" value="0" autocomplete="off"><br></td>
+					<td><input type="text" id="l" value="0" autocomplete="off" size='5'><br></td>
+				</tr>
+				<tr>
+					<td>Multiplier %:</td>
+					<td><input type="text" id="booster" value="0" autocomplete="off" size='5'></td>
+				</tr>
+				<tr>
+					<td>Cone of Shame:</td>
+					<td><input type="text" id="CoS" value="0" autocomplete="off" size='5' maxlength='1'></td>
 				</tr>
 			</table>
 		</div>
@@ -802,7 +830,7 @@ function openBoxes() {
 		</div>
 		
 		<nav>
-			<h4>Navigation</h4> <a href="index.html">Home</a> | <a href="lootboxes-links.html">Lootbox: Links</a> | <b>Lootbox: Names</b> |  <a href="equipment-links.html">Equipment: Links</a> | <a href="equipment.html">Equipment: Names</a>
+			<h4>Navigation</h4> <a href='index.html'>Home</a> | <b>Lootboxes</b> | <a href="equipment.html">Rune Stones</a>
 		</nav>
 		
 	</body>
