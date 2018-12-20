@@ -1,0 +1,247 @@
+<!--WARNING: This code is awfully laid out so have fun navigating.
+This was made by TheDogz in the October of 2018-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		
+//BOXES OBJECT - has all possible outcomes in some objects
+function generateNumbers() {
+
+	var winner = document.getElementById("num").value;
+	var winningNumber = Number(winner);
+	var possibleNums = [0, 0, 0, 0, 0, winningNumber, 0, 0, 0, 0, 0];
+	var idArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+	possibleNums[0] = winningNumber - 5;
+	possibleNums[1] = winningNumber - 4;
+	possibleNums[2] = winningNumber - 3;
+	possibleNums[3] = winningNumber - 2;
+	possibleNums[4] = winningNumber - 1;
+	
+	possibleNums[6] = winningNumber + 1;
+	possibleNums[7] = winningNumber + 2;
+	possibleNums[8] = winningNumber + 3;
+	possibleNums[9] = winningNumber + 4;
+	possibleNums[10] = winningNumber + 5;
+	
+	for (var z = 0; z < possibleNums.length; z++){
+		document.getElementById(idArray[z]).innerHTML = possibleNums[z];
+	}
+}
+
+	</script>
+	
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+			
+			body {
+				background-color: #333333;
+				color: white;
+				font-family: 'Averia Sans Libre', sans-serif;
+				padding-right: 1.5%;
+				padding-left: 1.5%;
+			}
+			
+			h1{
+				font-family: 'Boogaloo', cursive;
+				text-align: center;
+				font-size: 400%
+			}
+			
+			h2{
+				font-family: 'Boogaloo', cursive;
+				font-size: 200%;
+			}
+			
+			nav {
+				position: fixed;
+				right: 1.5%;
+				bottom: 10px;
+				color: white;
+			}
+			
+			a{color: white;}
+			a:visited{color: white;}
+			
+			.right-align{
+				text-align: right;
+			}
+			
+			.center{margin: auto;}
+			.text-center{text-align: center}
+			.pad{padding-right: 30%;}
+			
+			h3{font-family: 'Boogaloo', cursive;}
+			
+			.text{font-family: 'Averia Sans Libre', sans-serif;}
+			
+			input[type="text"]{
+				background-color: #333333;
+				color: white;
+			}
+			
+			.borderless {
+				width: 100%;
+				font-size: 140%;
+				font-family: 'Boogaloo', cursive;
+				border: none;
+			}
+			
+			.tier1 {
+				background-color: #4cff00;
+				color: black;
+				font-size: 200%
+			}
+			
+			.tier2 {
+				background-color: #d4ff00; 
+				color: black;
+				font-size: 175%
+			}
+			
+			.tier1names {
+				background-color: #4cff00;
+				color: black;
+				font-size: 200%
+			}
+			
+			.tier2names {
+				background-color: #d4ff00; 
+				color: black;
+				font-size: 175%
+			}
+			
+			.tier3 {
+				background-color: #ffff00; 
+				color: black;
+			}
+			
+			.yellow {
+				color: #26FFFE; 
+				text-decoration: none;
+			}
+
+			.myth {
+				color: red;
+				-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+				-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+				animation-name: rainbow;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+			
+			table, td {padding: 5px}
+			
+			td.top {
+				vertical-align: top;
+				width: 70px;
+				padding: 1px;
+				text-align: center;
+			}
+			
+			button {
+				display: block; 
+				margin: 0 auto;
+			}
+			
+			/* Safari 4.0 - 8.0 */
+			@-webkit-keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+
+			@keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+			
+			
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		
+	</head>
+
+	<body>
+		<h1>Mini Lottery Graphic Producer</h1>
+		<h2 class='right-align pad'>TheDogz did this.</h2>
+	
+		<div class="row">
+			<table class="center">
+				<tr>
+					<td>d100 roll:</td>
+					<td><input type="text" id="num" value="50" autocomplete="off" size='3' maxlength='3'><br></td>
+				</tr>
+			</table>
+		</div>
+
+		<button onclick="generateNumbers()">Generate!</button>
+		<h2>Winners:</h2>
+		<div class='row'>
+			<div class='col'>
+				<table>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='a'>00</h2></td>
+						<td><input class='borderless' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='b'>00</h2></td>
+						<td><input class='borderless' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='c'>00</h2></td>
+						<td><input class='borderless' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier2'><h2 class='tier2' id='d'>00</h2></td>
+						<td><input class='borderless tier2names' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier2'><h2 class='tier2'id='e'>00</h2></td>
+						<td><input class='borderless tier2names' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier1'><h2 class='tier1'id='f'>00</h2></td>
+						<td><input class='borderless tier1names' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier2'><h2 class='tier2'id='g'>00</h2></td>
+						<td><input class='borderless tier2names' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier2'><h2 class='tier2'id='h'>00</h2></td>
+						<td><input class='borderless tier2names' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='i'>00</h2></td>
+						<td><input class='borderless' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='j'>00</h2></td>
+						<td><input class='borderless' type="text" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<td class='top tier3'><h2 class='tier3' id='k'>00</h2></td>
+						<td><input class='borderless' size='500' type="text" autocomplete="off"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<nav>
+			<h4>Navigation</h4><a href='index.html'>Home</a> | <a href='lootboxes.html'>Lootboxes</a> | <a href="equipment.html">Rune Stones</a>
+		</nav>
+		
+	</body>
+</html>
