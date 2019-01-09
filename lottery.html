@@ -1,0 +1,237 @@
+<!--WARNING: This code is awfully laid out so have fun navigating.
+This was made by TheDogz in the October of 2018-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		
+//BOXES OBJECT - has all possible outcomes in some objects
+function generateNumbers() {
+	var numberArray = [];
+	var num;
+	var imgArray = [
+		'<img src="img/01.png" alt="1">', '<img src="img/02.png" alt="2">', '<img src="img/03.png" alt="3">',
+		'<img src="img/04.png" alt="4">', '<img src="img/05.png" alt="5">', '<img src="img/06.png" alt="6">',
+		'<img src="img/07.png" alt="7">', '<img src="img/08.png" alt="8">', '<img src="img/09.png" alt="9">',
+		'<img src="img/10.png" alt="10">', '<img src="img/11.png" alt="11">', '<img src="img/12.png" alt="12">',
+		'<img src="img/13.png" alt="13">', '<img src="img/14.png" alt="14">', '<img src="img/15.png" alt="15">',
+		'<img src="img/16.png" alt="16">', '<img src="img/17.png" alt="17">', '<img src="img/18.png" alt="18">',
+		'<img src="img/19.png" alt="19">', '<img src="img/20.png" alt="20">', '<img src="img/21.png" alt="21">',
+		'<img src="img/22.png" alt="22">', '<img src="img/23.png" alt="23">', '<img src="img/24.png" alt="24">',
+		'<img src="img/25.png" alt="25">', '<img src="img/26.png" alt="26">', '<img src="img/27.png" alt="27">',
+		'<img src="img/28.png" alt="28">', '<img src="img/29.png" alt="29">', '<img src="img/30.png" alt="30">'];
+	var dupe = false;
+	
+	for (var i = 0; i < 10; i++) {
+		num = Math.floor(Math.random() * 30);
+		dupe = false;
+		for (var j = 0; j < numberArray.length; j++) {
+			if (num == numberArray[j]) {
+				i--;
+				dupe = true;
+				break;
+			};
+		};
+		if (!dupe) {
+			numberArray.push(num);
+		};
+	}
+	
+	document.getElementById("num1").innerHTML = imgArray[numberArray[0]];
+	document.getElementById("num2").innerHTML = imgArray[numberArray[1]];
+	document.getElementById("num3").innerHTML = imgArray[numberArray[2]];
+	document.getElementById("num4").innerHTML = imgArray[numberArray[3]];
+	document.getElementById("num5").innerHTML = imgArray[numberArray[4]];
+	
+	document.getElementById("num6").innerHTML = imgArray[numberArray[5]];
+	document.getElementById("num7").innerHTML = imgArray[numberArray[6]];
+	document.getElementById("num8").innerHTML = imgArray[numberArray[7]];
+	document.getElementById("num9").innerHTML = imgArray[numberArray[8]];
+	document.getElementById("num10").innerHTML = imgArray[numberArray[9]];
+	
+	
+	
+}
+
+	</script>
+	
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+			
+			body {
+				background-color: #333333;
+				color: white;
+				font-family: 'Averia Sans Libre', sans-serif;
+				padding-right: 1.5%;
+				padding-left: 1.5%;
+			}
+			
+			h1{
+				font-family: 'Boogaloo', cursive;
+				text-align: center;
+				font-size: 400%
+			}
+			
+			h2{
+				font-family: 'Boogaloo', cursive;
+				font-size: 200%;
+			}
+			
+			nav {
+				position: fixed;
+				right: 1.5%;
+				bottom: 10px;
+				color: white;
+			}
+			
+			a{color: white;}
+			a:visited{color: white;}
+			
+			.right-align{
+				text-align: right;
+			}
+			
+			.center{margin: auto;}
+			.text-center{text-align: center}
+			.pad{padding-right: 30%;}
+			
+			h3{font-family: 'Boogaloo', cursive;}
+			
+			.text{font-family: 'Averia Sans Libre', sans-serif;}
+			
+			input[type="text"]{
+				background-color: #333333;
+				color: white;
+			}
+			
+			.borderless {
+				width: 100%;
+				font-size: 140%;
+				font-family: 'Boogaloo', cursive;
+				border: none;
+			}
+			
+			.tier1 {
+				background-color: #4cff00;
+				color: black;
+				font-size: 200%
+			}
+			
+			.tier2 {
+				background-color: #d4ff00; 
+				color: black;
+				font-size: 175%
+			}
+			
+			.tier1names {
+				background-color: #4cff00;
+				color: black;
+				font-size: 200%
+			}
+			
+			.tier2names {
+				background-color: #d4ff00; 
+				color: black;
+				font-size: 175%
+			}
+			
+			.tier3 {
+				background-color: #ffff00; 
+				color: black;
+			}
+			
+			.yellow {
+				color: #26FFFE; 
+				text-decoration: none;
+			}
+
+			.myth {
+				color: red;
+				-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+				-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+				animation-name: rainbow;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+			
+			table, td {padding: 5px}
+			
+			td.top {
+				vertical-align: top;
+				width: 70px;
+				padding: 1px;
+				text-align: center;
+			}
+			
+			button {
+				display: block; 
+				margin: 0 auto;
+			}
+			
+			/* Safari 4.0 - 8.0 */
+			@-webkit-keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+
+			@keyframes rainbow {
+				0%   {color: red;}
+				20%  {color: yellow;}
+				40%  {color: lime;}
+				50% {color: aqua;}
+				70% {color: blue;}
+				85% {color: magenta;}
+				100% {color: red;}
+			}
+			
+			input[type="text"]:focus{
+				border: none;
+				outline: none;
+			}
+			
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		
+	</head>
+
+	<body>
+		<h1>Lottery Graphic Producer</h1>
+		<h2 class='right-align pad'>TheDogz did this.</h2>
+
+		<button onclick="generateNumbers()">Generate!</button>
+		<h2>Winning Numbers:</h2>
+		<div class='row'>
+			<div class='col'>
+				<table>
+					<tr>
+						<td id='num1'></td>
+						<td id='num2'></td>
+						<td id='num3'></td>
+						<td id='num4'></td>
+						<td id='num5'></td>
+					</tr>
+					
+					<tr>
+						<td id='num6'></td>
+						<td id='num7'></td>
+						<td id='num8'></td>
+						<td id='num9'></td>
+						<td id='num10'></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<br><br><br><br><br><br><br>
+		<nav>
+			<h4>Navigation</h4><a href='index.html'>Home</a> | <a href='lootboxes.html'>Lootboxes</a> | <a href="equipment.html">Rune Stones</a>
+		</nav>
+		
+	</body>
+</html>
