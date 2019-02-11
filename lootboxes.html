@@ -50,7 +50,7 @@ function openBoxes() {
 					"<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>", "<ins class='red'>Hibiscus (50BT)</ins>",
 					"<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>Flan (53BT)</ins>", "<ins class='red'>2 PECs</ins>",
 					"<ins class='red'>2 PECs</ins>", "<ins class='red'>2 PECs</ins>", "<ins class='red'>2 PECs</ins>"],
-			value: [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 0, 0, 0, 0],
+			value: [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53],
 			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		},
 			
@@ -367,9 +367,6 @@ function openBoxes() {
 			item = (common.d100e.contents[d25]);
 			total = total + common.d100e.value[d25];
 			eBox = eBox + common.d100e.eBox[d25];
-			if (d25 >= 21) {
-				pec = pec + 2
-			}
 			
 		} else if(d100 >= common.d100r.min){
 			item = (common.d100r.contents[d25]);
@@ -815,8 +812,7 @@ function openBoxes() {
 			</div>
 			
 			<div class='col right-align'>
-				<h3 id="finalValue" class="text">Total: 0 BT</h3>
-				<h3 class="text" id='pecs'>0 PEC</h3>
+				<h3 id="finalValue" class="text">Total: 0 XP</h3>
 				<h4 class='grey' id='cBoxes'>0 Common Boxes</h4>
 				<h4 class='green' id='uBoxes'>0 Uncommon Boxes</h4>
 				<h4 class='blue' id='rBoxes'>0 Rare Boxes</h4>
