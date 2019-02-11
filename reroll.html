@@ -12,15 +12,15 @@ function openBoxes() {
 	document.getElementById("legendary-items").innerHTML = "";
 	
 	for (i = 0; i < l; i++) {
-	    var thonk = ["<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>",
-			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
-			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Generic Thonk</b>", 
-			"<b class='yellow'>Collectable: Generic Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
-			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", 
-			"<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Cheers Thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
-			"<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", "<b class='yellow'>Collectable: Pika-thonk</b>", 
-			"<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", "<b class='yellow'>Collectable: phantomDan</b>", 
-			"<b class='yellow'>Collectable: Dogz Thonk</b>"]
+	    var thonk = ["<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>",
+			"<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>", 
+			"<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Sugar Cookie</b>", 
+			"<b class='yellow'>Collectable: Sugar Cookie</b>", "<b class='yellow'>Collectable: Peanut Butter Cookie</b>", "<b class='yellow'>Collectable: Peanut Butter Cookie</b>", 
+			"<b class='yellow'>Collectable: Peanut Butter Cookie</b>", "<b class='yellow'>Collectable: Peanut Butter Cookie</b>", "<b class='yellow'>Collectable: Peanut Butter Cookie</b>", 
+			"<b class='yellow'>Collectable: Peanut Butter Cookie</b>", "<b class='yellow'>Collectable: Peanut Butter Cookie</b>", "<b class='yellow'>Collectable: Gingerbread Cookie</b>", 
+			"<b class='yellow'>Collectable: Gingerbread Cookie</b>", "<b class='yellow'>Collectable: Gingerbread Cookie</b>", "<b class='yellow'>Collectable: Gingerbread Cookie</b>", 
+			"<b class='yellow'>Collectable: Chocolate Cookie</b>", "<b class='yellow'>Collectable: Chocolate Cookie</b>", "<b class='yellow'>Collectable: Chocolate Cookie</b>", 
+			"<b class='yellow'>Collectable: Dog Cookie</b>"]
 		var d25 = Math.floor(Math.random() * 25); //Random 0-24
 			
 	   document.getElementById("legendary-items").innerHTML += "<li>" + thonk[d25] + "</li>";
@@ -110,7 +110,7 @@ function openBoxes() {
 	</head>
 
 	<body>
-		<h1>Collectable Thonk Re-roll</h1>
+		<h1>Cookie Re-roller</h1>
 		<h2 class='right-align pad'>Coded by TheDogz</h2>
 	
 		<div class="row">
@@ -118,7 +118,7 @@ function openBoxes() {
 				<tr>
 					<td>Rolling</td>
 					<td><input type="text" id="l" value="0" size='1' maxlength='2' autocomplete="off"></td>
-					<td>Thonks...</td>
+					<td>Cookies...</td>
 				</tr>
 			</table>
 		</div>
