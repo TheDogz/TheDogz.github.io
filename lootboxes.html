@@ -732,11 +732,19 @@ function openBoxes() {
 	total = Math.round(total * booster * coneBoost);
 	document.getElementById("finalValue").innerHTML = "Total: " + total + " EXP";
 	
-	cBox = cBox * coneBoost;
-	uBox = uBox * coneBoost;
-	rBox = rBox * coneBoost;
-	eBox = eBox * coneBoost;
-	lBox = lBox * coneBoost;
+	if (coneBoost >= 2) {
+		cBox = cBox * 2;
+		uBox = uBox * 2;
+		rBox = rBox * 2;
+		eBox = eBox * 2;
+		lBox = lBox * 2;
+	} else {
+		cBox = cBox;
+		uBox = uBox;
+		rBox = rBox;
+		eBox = eBox;
+		lBox = lBox;
+	}
 	
 	document.getElementById("cBoxes").innerHTML = cBox + " Common Boxes";
 	document.getElementById("uBoxes").innerHTML = uBox + " Uncommon Boxes";
