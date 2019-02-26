@@ -7,8 +7,7 @@ This was made by TheDogz in the October of 2018-->
 		
 //BOXES OBJECT - has all possible outcomes in some objects
 function openBoxes() {
-	var common =
-	{
+	var common = {
 		d100c: {
 			min: 0, 
 			contents: ["<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>3BT</ins>", "<ins class='grey'>4BT</ins>", 
@@ -59,9 +58,7 @@ function openBoxes() {
 			contents: "<b class='myth'>Dog Food: Legendaries sell for 30% more (125BT)</b>"
 		} 
 	};
-	
-	var uncommon =
-	{
+	var uncommon = {
 		d100c: {
 			min: 0, 
 			contents: ["<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>Trash (2BT)</ins>", "<ins class='grey'>3BT</ins>", "<ins class='grey'>4BT</ins>", "<ins class='grey'>5BT</ins>", "<ins class='grey'>Empty (6BT)</ins>", "<ins class='grey'>Empty (6BT)</ins>", 
@@ -127,8 +124,6 @@ function openBoxes() {
 			contents: "<b class='myth'>Dog Collar - Extra Cookie Re-roll (175 BT)</b>"
 		}
 	};
-	
-	//Rare Box Code
 	var rare = {
 		d100c: {
 			min: 0, 
@@ -244,7 +239,7 @@ function openBoxes() {
 			"<ins class='red'>Potato (57BT)</ins>", "<ins class='red'>Trout (60BT)</ins>",  "<ins class='red'>Trout (60BT)</ins>",  "<ins class='red'>Trout (60BT)</ins>", 
 			"<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", "<ins class='red'>Beer Yams (63BT)</ins>", 
 			"<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", "<ins class='red'>Non-potable Water (67BT)</ins>", 
-			"<ins class='red'>2 Epic Box</ins>", "<b class='yellow'>Collectable: Generic Thonk (No-Reroll)</b>" , "<ins class='yellow'>1 Legendary Box</ins>"],
+			"<ins class='red'>2 Epic Box</ins>", "<b class='yellow'>Collectable: Sugar Cookie (No-Reroll)</b>" , "<ins class='yellow'>1 Legendary Box</ins>"],
 			value: [0, 50, 50, 53, 53, 53, 57, 57, 57, 57, 57, 57, 60, 60, 60, 63, 63, 63, 63, 67, 67, 67, 0, 0, 0],
 			eBox: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
 			lBox: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
@@ -332,6 +327,7 @@ function openBoxes() {
 	var eBox = 0;
 	var lBox = 0;
 	var pec = 0;
+	var upgradeProb = [0, 0.03, 0.06, 0.1, 0.15, 0.2];
 	
 	/**Gets text input values as JS Variables*************/
 	
@@ -343,7 +339,9 @@ function openBoxes() {
 		var boosterPercent = document.getElementById("booster").value;
 		var booster = boosterPercent / 100;
 		var coneOfShame = document.getElementById("CoS").value;
-		var coneBoost = Math.pow(2, coneOfShame);
+		var coneBoostValues = [1, 2, 4, 6, 8, 10];
+		var coneBoost = coneBoostValues[coneOfShame];
+		var betaLevel = document.getElementById("beta").value;
 	
 	/*****************************************************/
 	/*****************************************************/
@@ -358,32 +356,56 @@ function openBoxes() {
 	for(var i = 0; i < c; i++){
 		d100 = Math.floor(Math.random() * 100); //Random 0-99
 		d25 = Math.floor(Math.random() * 25); //Random 0-24
-		
-		if(d100 >= common.d100m.min){
-			item = (common.d100m.contents);
-			collectArray.push(item);
-			
-		} else if(d100 >= common.d100e.min){
-			item = (common.d100e.contents[d25]);
-			total = total + common.d100e.value[d25];
-			eBox = eBox + common.d100e.eBox[d25];
-			
-		} else if(d100 >= common.d100r.min){
-			item = (common.d100r.contents[d25]);
-			total = total + common.d100r.value[d25];
-			rBox = rBox + common.d100r.rBox[d25];
-			
-		} else if(d100 >= common.d100u.min){
-			item = (common.d100u.contents[d25]);
-			total = total + common.d100u.value[d25];
-			uBox = uBox + common.d100u.uBox[d25];
-			rBox = rBox + common.d100u.rBox[d25];
-			
+		if(Math.random() < upgradeProb[betaLevel]) {
+			if(d100 >= common.d100m.min){
+				item = (common.d100m.contents);
+				collectArray.push(item);	
+			} else if (d100 >= common.d100e.min){
+				item = (uncommon.d100l.contents[d25]);
+				collectArray.push(item);
+			} else if (d100 >= common.d100r.min){
+				item = (common.d100e.contents[d25]);
+				total = total + common.d100e.value[d25];
+				eBox = eBox + common.d100e.eBox[d25];
+				
+			} else if(d100 >= common.d100u.min){
+				item = (common.d100r.contents[d25]);
+				total = total + common.d100r.value[d25];
+				rBox = rBox + common.d100r.rBox[d25];
+				
+			} else if(d100 >= common.d100c.min){
+				item = (common.d100u.contents[d25]);
+				total = total + common.d100u.value[d25];
+				uBox = uBox + common.d100u.uBox[d25];
+				rBox = rBox + common.d100u.rBox[d25];	
+			}
 		} else {
-			item = (common.d100c.contents[d25]);
-			total = total + common.d100c.value[d25];
-			cBox = cBox + common.d100c.cBox[d25];
-			uBox = uBox + common.d100c.uBox[d25];
+			if(d100 >= common.d100m.min){
+				item = (common.d100m.contents);
+				collectArray.push(item);
+				
+			} else if(d100 >= common.d100e.min){
+				item = (common.d100e.contents[d25]);
+				total = total + common.d100e.value[d25];
+				eBox = eBox + common.d100e.eBox[d25];
+				
+			} else if(d100 >= common.d100r.min){
+				item = (common.d100r.contents[d25]);
+				total = total + common.d100r.value[d25];
+				rBox = rBox + common.d100r.rBox[d25];
+				
+			} else if(d100 >= common.d100u.min){
+				item = (common.d100u.contents[d25]);
+				total = total + common.d100u.value[d25];
+				uBox = uBox + common.d100u.uBox[d25];
+				rBox = rBox + common.d100u.rBox[d25];
+				
+			} else {
+				item = (common.d100c.contents[d25]);
+				total = total + common.d100c.value[d25];
+				cBox = cBox + common.d100c.cBox[d25];
+				uBox = uBox + common.d100c.uBox[d25];
+			}
 		}
 		itemArray.push(item);
 	}
@@ -392,39 +414,72 @@ function openBoxes() {
 	for(i = 0; i < u; i++){
 		d100 = Math.floor(Math.random() * 100); //Random 0-99
 		d25 = Math.floor(Math.random() * 25); //Random 0-24
-		
-		if(d100 >= uncommon.d100m.min){
-			item = (uncommon.d100m.contents);
-			collectArray.push(item);
-			
-		} else if(d100 >= uncommon.d100l.min){
-			item = (uncommon.d100l.contents[d25]);
-			collectArray.push(item);
-			
-		} else if(d100 >= uncommon.d100e.min){
-			item = (uncommon.d100e.contents[d25]);
-			total = total + uncommon.d100e.value[d25];
-			eBox = eBox + uncommon.d100e.eBox[d25];
-			lBox = lBox + uncommon.d100e.lBox[d25];
-			
-		} else if(d100 >= uncommon.d100r.min){
-			item = (uncommon.d100r.contents[d25]);
-			total = total + uncommon.d100r.value[d25];
-			rBox = rBox + uncommon.d100r.rBox[d25];
-			
-		} else if(d100 >= uncommon.d100u.min){
-			item = (uncommon.d100u.contents[d25]);
-			total = total + uncommon.d100u.value[d25];
-			cBox = cBox + uncommon.d100u.cBox[d25];
-			uBox = uBox + uncommon.d100u.uBox[d25];
-			rBox = rBox + uncommon.d100u.rBox[d25];
-			
+		if(Math.random() < upgradeProb[betaLevel]) {
+			if(d100 >= uncommon.d100m.min){
+				item = (uncommon.d100m.contents);
+				collectArray.push(item);
+			} else if(d100 >= uncommon.d100l.min){
+				item = (uncommon.d100l.contents[d25]);
+				collectArray.push(item);
+				collectArray.push(item);
+				uncommonItemArray.push(item);
+			} else if(d100 >= uncommon.d100e.min){
+				item = (uncommon.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= uncommon.d100r.min){
+				item = (uncommon.d100e.contents[d25]);
+				total = total + uncommon.d100e.value[d25];
+				eBox = eBox + uncommon.d100e.eBox[d25];
+				lBox = lBox + uncommon.d100e.lBox[d25];
+				
+			} else if(d100 >= uncommon.d100u.min){
+				item = (uncommon.d100r.contents[d25]);
+				total = total + uncommon.d100r.value[d25];
+				rBox = rBox + uncommon.d100r.rBox[d25];
+				
+			} else if(d100 >= uncommon.d100c.min){
+				item = (uncommon.d100u.contents[d25]);
+				total = total + uncommon.d100u.value[d25];
+				cBox = cBox + uncommon.d100u.cBox[d25];
+				uBox = uBox + uncommon.d100u.uBox[d25];
+				rBox = rBox + uncommon.d100u.rBox[d25];
+				
+			}
 		} else {
-			item = (uncommon.d100c.contents[d25]);
-			total = total + uncommon.d100c.value[d25];
-			cBox = cBox + uncommon.d100c.cBox[d25];
-			uBox = uBox + uncommon.d100c.uBox[d25];
-		
+			if(d100 >= uncommon.d100m.min){
+				item = (uncommon.d100m.contents);
+				collectArray.push(item);
+				
+			} else if(d100 >= uncommon.d100l.min){
+				item = (uncommon.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= uncommon.d100e.min){
+				item = (uncommon.d100e.contents[d25]);
+				total = total + uncommon.d100e.value[d25];
+				eBox = eBox + uncommon.d100e.eBox[d25];
+				lBox = lBox + uncommon.d100e.lBox[d25];
+				
+			} else if(d100 >= uncommon.d100r.min){
+				item = (uncommon.d100r.contents[d25]);
+				total = total + uncommon.d100r.value[d25];
+				rBox = rBox + uncommon.d100r.rBox[d25];
+				
+			} else if(d100 >= uncommon.d100u.min){
+				item = (uncommon.d100u.contents[d25]);
+				total = total + uncommon.d100u.value[d25];
+				cBox = cBox + uncommon.d100u.cBox[d25];
+				uBox = uBox + uncommon.d100u.uBox[d25];
+				rBox = rBox + uncommon.d100u.rBox[d25];
+				
+			} else {
+				item = (uncommon.d100c.contents[d25]);
+				total = total + uncommon.d100c.value[d25];
+				cBox = cBox + uncommon.d100c.cBox[d25];
+				uBox = uBox + uncommon.d100c.uBox[d25];
+			
+			}
 		}
 		uncommonItemArray.push(item);
 	}
@@ -433,40 +488,73 @@ function openBoxes() {
 	for(i = 0; i < r; i++){
 		d100 = Math.floor(Math.random() * 100); //Random 0-99
 		d25 = Math.floor(Math.random() * 25); //Random 0-24
-		
-		if(d100 >= rare.d100m.min){
-			item = (rare.d100m.contents);
-			collectArray.push(item);
-			
-		} else if(d100 >= rare.d100l.min){
-			item = (rare.d100l.contents[d25]);
-			collectArray.push(item);
-			
-		} else if(d100 >= rare.d100e.min){
-			item = (rare.d100e.contents[d25]);
-			total = total + rare.d100e.value[d25];
-			eBox = eBox + rare.d100e.eBox[d25];
-			lBox = lBox + rare.d100e.lBox[d25];
-			
-		} else if(d100 >= rare.d100r.min){
-			item = (rare.d100r.contents[d25]);
-			total = total + rare.d100r.value[d25];
-			rBox = rBox + rare.d100r.rBox[d25];
-			eBox = eBox + rare.d100r.eBox[d25];
-			
-		} else if(d100 >= rare.d100u.min){
-			item = (rare.d100u.contents[d25]);
-			total = total + rare.d100u.value[d25];
-			cBox = cBox + rare.d100u.cBox[d25];
-			uBox = uBox + rare.d100u.uBox[d25];
-			rBox = rBox + rare.d100u.rBox[d25];
-			
+		if(Math.random() < upgradeProb[betaLevel]) {
+			if(d100 >= rare.d100m.min){
+				item = (rare.d100m.contents);
+				collectArray.push(item);
+				collectArray.push(item);
+				rareItemArray.push(item);
+			} else if(d100 >= rare.d100e.min){
+				item = (rare.d100l.contents[d25]);
+				collectArray.push(item);	
+			} else if(d100 >= rare.d100e.min){
+				item = (rare.d100l.contents[d25]);
+				collectArray.push(item);
+			} else if(d100 >= rare.d100r.min){
+				item = (rare.d100e.contents[d25]);
+				total = total + rare.d100e.value[d25];
+				eBox = eBox + rare.d100e.eBox[d25];
+				lBox = lBox + rare.d100e.lBox[d25];
+				
+			} else if(d100 >= rare.d100u.min){
+				item = (rare.d100r.contents[d25]);
+				total = total + rare.d100r.value[d25];
+				rBox = rBox + rare.d100r.rBox[d25];
+				eBox = eBox + rare.d100r.eBox[d25];
+				
+			} else if(d100 >= rare.d100c.min){
+				item = (rare.d100u.contents[d25]);
+				total = total + rare.d100u.value[d25];
+				cBox = cBox + rare.d100u.cBox[d25];
+				uBox = uBox + rare.d100u.uBox[d25];
+				rBox = rBox + rare.d100u.rBox[d25];
+				
+			}	
 		} else {
-			item = (rare.d100c.contents[d25]);
-			total = total + rare.d100c.value[d25];
-			cBox = cBox + rare.d100c.cBox[d25];
-			uBox = uBox + rare.d100c.uBox[d25];
-			
+			if(d100 >= rare.d100m.min){
+				item = (rare.d100m.contents);
+				collectArray.push(item);
+				
+			} else if(d100 >= rare.d100l.min){
+				item = (rare.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= rare.d100e.min){
+				item = (rare.d100e.contents[d25]);
+				total = total + rare.d100e.value[d25];
+				eBox = eBox + rare.d100e.eBox[d25];
+				lBox = lBox + rare.d100e.lBox[d25];
+				
+			} else if(d100 >= rare.d100r.min){
+				item = (rare.d100r.contents[d25]);
+				total = total + rare.d100r.value[d25];
+				rBox = rBox + rare.d100r.rBox[d25];
+				eBox = eBox + rare.d100r.eBox[d25];
+				
+			} else if(d100 >= rare.d100u.min){
+				item = (rare.d100u.contents[d25]);
+				total = total + rare.d100u.value[d25];
+				cBox = cBox + rare.d100u.cBox[d25];
+				uBox = uBox + rare.d100u.uBox[d25];
+				rBox = rBox + rare.d100u.rBox[d25];
+				
+			} else {
+				item = (rare.d100c.contents[d25]);
+				total = total + rare.d100c.value[d25];
+				cBox = cBox + rare.d100c.cBox[d25];
+				uBox = uBox + rare.d100c.uBox[d25];
+				
+			}
 		}
 		rareItemArray.push(item);
 	}
@@ -475,42 +563,78 @@ function openBoxes() {
 	for(i = 0; i < e; i++){
 		d100 = Math.floor(Math.random() * 100); //Random 0-99
 		d25 = Math.floor(Math.random() * 25); //Random 0-24
-		
-		if(d100 >= epic.d100m.min){
-			item = (epic.d100m.contents);
-			collectArray.push(item);
-			
-		} else if(d100 >= epic.d100l.min){
-			item = (epic.d100l.contents[d25]);
-			collectArray.push(item);
-			
-		} else if(d100 >= epic.d100e.min){
-			item = (epic.d100e.contents[d25]);
-			total = total + epic.d100e.value[d25];
-			if (d25 == 23) {
+		if(Math.random() < upgradeProb[betaLevel]) {
+			if(d100 >= epic.d100m.min){
+				item = (epic.d100m.contents);
 				collectArray.push(item);
+			} else if(d100 >= epic.d100l.min){
+				item = (epic.d100l.contents[d25]);
+				collectArray.push(item);
+				collectArray.push(item);
+				epicItemArray.push(item);
+			} else if(d100 >= epic.d100e.min){
+				item = (epic.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= epic.d100r.min){
+				item = (epic.d100e.contents[d25]);
+				total = total + epic.d100e.value[d25];
+				if (d25 == 23) {
+					collectArray.push(item);
+				}
+				lBox = lBox + epic.d100e.lBox[d25];
+				
+			} else if(d100 >= epic.d100u.min){
+				item = (epic.d100r.contents[d25]);
+				total = total + epic.d100r.value[d25];
+				rBox = rBox + epic.d100r.rBox[d25];
+				eBox = eBox + epic.d100r.eBox[d25];
+				
+			} else if(d100 >= epic.d100c.min){
+				item = (epic.d100u.contents[d25]);
+				total = total + epic.d100u.value[d25];
+				cBox = cBox + epic.d100u.cBox[d25];
+				uBox = uBox + epic.d100u.uBox[d25];
+				rBox = rBox + epic.d100u.rBox[d25];
+				
 			}
-			lBox = lBox + epic.d100e.lBox[d25];
-			
-		} else if(d100 >= epic.d100r.min){
-			item = (epic.d100r.contents[d25]);
-			total = total + epic.d100r.value[d25];
-			rBox = rBox + epic.d100r.rBox[d25];
-			eBox = eBox + epic.d100r.eBox[d25];
-			
-		} else if(d100 >= epic.d100u.min){
-			item = (epic.d100u.contents[d25]);
-			total = total + epic.d100u.value[d25];
-			cBox = cBox + epic.d100u.cBox[d25];
-			uBox = uBox + epic.d100u.uBox[d25];
-			rBox = rBox + epic.d100u.rBox[d25];
-			
 		} else {
-			item = (epic.d100c.contents[d25]);
-			total = total + epic.d100c.value[d25];
-			cBox = cBox + epic.d100c.cBox[d25];
-			uBox = uBox + epic.d100c.uBox[d25];
-			
+			if(d100 >= epic.d100m.min){
+				item = (epic.d100m.contents);
+				collectArray.push(item);
+				
+			} else if(d100 >= epic.d100l.min){
+				item = (epic.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= epic.d100e.min){
+				item = (epic.d100e.contents[d25]);
+				total = total + epic.d100e.value[d25];
+				if (d25 == 23) {
+					collectArray.push(item);
+				}
+				lBox = lBox + epic.d100e.lBox[d25];
+				
+			} else if(d100 >= epic.d100r.min){
+				item = (epic.d100r.contents[d25]);
+				total = total + epic.d100r.value[d25];
+				rBox = rBox + epic.d100r.rBox[d25];
+				eBox = eBox + epic.d100r.eBox[d25];
+				
+			} else if(d100 >= epic.d100u.min){
+				item = (epic.d100u.contents[d25]);
+				total = total + epic.d100u.value[d25];
+				cBox = cBox + epic.d100u.cBox[d25];
+				uBox = uBox + epic.d100u.uBox[d25];
+				rBox = rBox + epic.d100u.rBox[d25];
+				
+			} else {
+				item = (epic.d100c.contents[d25]);
+				total = total + epic.d100c.value[d25];
+				cBox = cBox + epic.d100c.cBox[d25];
+				uBox = uBox + epic.d100c.uBox[d25];
+				
+			}
 		}
 		epicItemArray.push(item);
 	}
@@ -519,28 +643,49 @@ function openBoxes() {
 	for(i = 0; i < l; i++){
 		d100 = Math.floor(Math.random() * 100); //Random 0-99
 		d25 = Math.floor(Math.random() * 25); //Random 0-24
-		
-		if(d100 >= legendary.d100m.min){
-			item = (legendary.d100m.contents);
-			collectArray.push(item);
-			
-		} else if(d100 >= legendary.d100l.min){
-			item = (legendary.d100l.contents[d25]);
-			collectArray.push(item);
-			
-		} else if(d100 >= legendary.d100e.min){
-			item = (legendary.d100e.contents[d25]);
-			total = total + legendary.d100e.value[d25];
-			eBox = eBox + legendary.d100e.eBox[d25];
-			lBox = lBox + legendary.d100e.lBox[d25];
+		if(Math.random() < upgradeProb[betaLevel]) {
+			if(d100 >= legendary.d100m.min){
+				item = (legendary.d100m.contents);
+				collectArray.push(item);
+			} else if(d100 >= legendary.d100l.min){
+				item = (legendary.d100l.contents[d25]);
+				collectArray.push(item);
+				collectArray.push(item);
+				legendaryItemArray.push(item);
+			} else if(d100 >= legendary.d100e.min){
+				item = (legendary.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= legendary.d100r.min){
+				item = (legendary.d100e.contents[d25]);
+				total = total + legendary.d100e.value[d25];
+				eBox = eBox + legendary.d100e.eBox[d25];
+				lBox = lBox + legendary.d100e.lBox[d25];
+				
 			
 		} else {
-			item = (legendary.d100r.contents[d25]);
-			total = total + legendary.d100r.value[d25];
-			rBox = rBox + legendary.d100r.rBox[d25];
-			eBox = eBox + legendary.d100r.eBox[d25];
-			lBox = lBox + legendary.d100r.lBox[d25];
-			
+			if(d100 >= legendary.d100m.min){
+				item = (legendary.d100m.contents);
+				collectArray.push(item);
+				
+			} else if(d100 >= legendary.d100l.min){
+				item = (legendary.d100l.contents[d25]);
+				collectArray.push(item);
+				
+			} else if(d100 >= legendary.d100e.min){
+				item = (legendary.d100e.contents[d25]);
+				total = total + legendary.d100e.value[d25];
+				eBox = eBox + legendary.d100e.eBox[d25];
+				lBox = lBox + legendary.d100e.lBox[d25];
+				
+			} else {
+				item = (legendary.d100r.contents[d25]);
+				total = total + legendary.d100r.value[d25];
+				rBox = rBox + legendary.d100r.rBox[d25];
+				eBox = eBox + legendary.d100r.eBox[d25];
+				lBox = lBox + legendary.d100r.lBox[d25];
+				
+			}
 		}
 		legendaryItemArray.push(item);
 	}
@@ -770,6 +915,10 @@ function openBoxes() {
 				<tr>
 					<td>Cone of Shame:</td>
 					<td><input type="text" id="CoS" value="0" autocomplete="off" size='5' maxlength='1'></td>
+				</tr>
+				<tr>
+					<td>Beta Rune:</td>
+					<td><input type="text" id="beta" value="0" autocomplete="off" size='5' maxlength='1'></td>
 				</tr>
 			</table>
 		</div>
