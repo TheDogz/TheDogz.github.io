@@ -17,10 +17,14 @@
 </head>
 <body>
 	<div id="grid"></div>
-	<button onclick="drawGrid()">Go.</button>
+	<p id="seed">Seed: Only works (Max 99 Mines)</p>
 	<p>Wide: <input type="text" id="wide" value="15" autocomplete="off" size="5" maxlength="2"></p>
 	<p>High: <input type="text" id="high" value="15" autocomplete="off" size="5" maxlength="2"></p>
 	<p>Bomb: <input type="text" id="bomb" value="30" autocomplete="off" size="5" maxlength="4"></p>
+	<button onclick="drawGrid()">Generate Random Grid</button><br>
+	<p>Seed: <input type="text" id="seedInput" value="30" autocomplete="off" size="50"></p>
+	<button onclick="drawSeededGrid()">Generate Seeded Grid</button>
+	
 </body>
 	<script>
 		var values = ['&nbsp;0', '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '&nbsp;B']
@@ -117,6 +121,14 @@
 			return false;
 		}
 		
+		function generateSeed() {
+		let seedArray = [gridWidth, gridHeight];
+			for (var i = 0; i < bombQty; i++) {
+				seedArray.push(bombArray[i]);
+			}
+			document.getElementById("seed").innerHTML = "Seed: " + seedArray.join("-");
+		}
+		
 		function drawGrid() {
 			bombQty = document.getElementById("bomb").value;
 			gridWidth = document.getElementById("wide").value;
@@ -129,6 +141,36 @@
 					let tableSection = values[gridArray[i][j]] + "&nbsp;";
 					table += tableSection;
 				}	
+			}
+			if (bombQty <= 99) {
+				generateSeed();
+			} else {
+				document.getElementById("seed").innerHTML = "Seed: ERROR! Too many bombs (Must be below 99)";
+			}
+			document.getElementById("grid").innerHTML = table;
+		}
+		
+		function drawSeededGrid() {
+			seedInput = document.getElementById("seedInput").value;
+			seedValueArray = seedInput.split("-");
+			gridWidth = seedValueArray.shift();
+			gridHeight = seedValueArray.shift();
+			gridArray = generateArray();
+			bombArray = seedValueArray;
+			bombQty = seedValueArray.length;
+			makeBombs();
+			var table = "<p>";
+			for (var i = 0; i < gridHeight; i++) {
+				table += "<br>&nbsp;";
+				for (var j = 0; j < gridWidth; j++) {
+					let tableSection = values[gridArray[i][j]] + "&nbsp;";
+					table += tableSection;
+				}	
+			}
+			if (bombQty <= 99) {
+				generateSeed();
+			} else {
+				document.getElementById("seed").innerHTML = "Seed: ERROR! Too many bombs (Must be below 99)";
 			}
 			document.getElementById("grid").innerHTML = table;
 		}
