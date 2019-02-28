@@ -7,6 +7,7 @@
 		}
 		p {
 			font-family: Courier, monospace;
+			font-size: 100%;
 			color: white;
 		}
 		body {
@@ -19,10 +20,10 @@
 	<button onclick="drawGrid()">Go.</button>
 	<p>Wide: <input type="text" id="wide" value="15" autocomplete="off" size="5" maxlength="2"></p>
 	<p>High: <input type="text" id="high" value="15" autocomplete="off" size="5" maxlength="2"></p>
-	<p>Bomb: <input type="text" id="bomb" value="30" autocomplete="off" size="5" maxlength="2"></p>
+	<p>Bomb: <input type="text" id="bomb" value="30" autocomplete="off" size="5" maxlength="4"></p>
 </body>
 	<script>
-		var values = [' 0', ' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', ' B']
+		var values = ['&nbsp;0', '&nbsp;1', '&nbsp;2', '&nbsp;3', '&nbsp;4', '&nbsp;5', '&nbsp;6', '&nbsp;7', '&nbsp;8', '&nbsp;9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '&nbsp;B']
 		var bombQty, gridWidth, gridHeight, gridArray, bombArray;
 		
 		function produceGrid() {
