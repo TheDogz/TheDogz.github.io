@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+
+body {
+	background-color: #333333;
+	color: white;
+	font-family: 'Averia Sans Libre', sans-serif;
+	padding-right: 1.5%;
+	padding-left: 1.5%;
+}
+
+a {
+	font-size: 125%;
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+button {
+	background-color: #222222;
+	font-size: 110%;
+	font-family: 'Averia Sans Libre', sans-serif;
+	padding: 5px;
+	color: white;
+}
+
+@keyframes buttonHover {
+	from {
+		background-color: #222222;
+		font-size: 110%;
+	}
+	to {
+		background-color: #666666;
+		font-size: 125%;
+	}
+}
+
+button:hover {
+  background-color: #;
+  animation-name: buttonHover;
+  animation-duration: 1.2s;
+}
+
+h1{
+	font-family: 'Boogaloo', cursive;
+	text-align: center;
+	font-size: 300%
+}
+
+table {
+	border-collapse: seperate;
+	border-spacing: 3px;
+	border: solid 3px white;
+	margin: auto;
+}
+
+table.grid {
+    border-collapse: collapse;
+    border-spacing: 0;
+	margin: auto;
+    padding: 0px;
+    border: 0px;
+}
+
+td {
+	padding: 0px;
+	border-width: 0px;
+	margin: 0px;
+	color: white;
+}
+
+th {
+	font-size: 150%;
+	
+}
+
+td.notGrid {
+	padding: 5px;
+	padding-left: 10px;
+	border-width: 3px;
+	margin: 3px;
+	color: white;
+}
+
+td.notGrid2 {
+	padding: 10px;
+	padding-left: 10px;
+	border-width: 3px;
+	margin: 3px;
+	color: white;
+}
+
+th {
+	padding-left: 10px;
+	text-align: center;
+}
+
+img {
+	display: block;
+}
+
+button {
+	display: block;
+	margin: auto;
+}
+
+p {
+	text-align: center;
+	font-size: 150%;
+	font-family: 'Averia Sans Libre', sans-serif;
+}
+
+input {
+	background-color: #222222;
+	padding: 5px;
+	color: white;
+	font-size: 110%;
+	font-family: 'Averia Sans Libre', sans-serif;
+	text-align: center;
+	display: block;
+	margin: auto;
+}
+
+.win {color: lime;}
+.lose {color: red;}
+.playing {color: white;}
+.noBorder {border: none;}
+.left {text-align: left; padding-right: 50px; font-size: 115%;}
+.right {text-align: right; padding-left: 50px; font-size: 115%;}
+.mono {font-family: Courier, monospace;}
+.hasBorder {
+	padding: 5px;
+	border-width: 3px;
+	margin: 3px;
+	color: white;
+}
+.mainGameGrid {
+	cursor: pointer;
+    -webkit-user-select: none; /*Safari*/
+    -moz-user-select: none; /*Firefox*/
+    -ms-user-select: none; /*IE + Edge*/
+    user-select: none; /*Chrome + Opera*/
+}
+.bigger {
+	font-size: 125%;
+}
+.rightdashed {
+	border-right: dashed 3px white;
+}

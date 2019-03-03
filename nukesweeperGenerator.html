@@ -68,10 +68,10 @@
 			return array;
 		}
 		
-		function toX(val) {
+		function toY(val) {
 			return val % gridHeight;
 		}
-		function toY(val) {
+		function toX(val) {
 			return Math.floor(val / gridHeight);
 		}
 		
@@ -79,6 +79,9 @@
 			for (var j = 0; j < bombQty; j++) {
 				let x = toX(bombArray[j]);
 				let y = toY(bombArray[j]);
+				console.log(x);
+				console.log(y);
+				console.log(gridArray[y]);
 				gridArray[y][x] = 33;
 				
 				if (checkSq(x-2, y-2)){gridArray[y-2][x-2]+=1}
