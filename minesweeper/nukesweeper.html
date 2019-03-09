@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css.css">
+	</head>
+	
+	<body>
+		<h1>Nukesweeper</h1>
+		<table class='noBorder'>
+			<tr>
+				<td class='hasBorder'>
+					<table>
+						<tr>
+							<th colspan="2">Presets</th>
+						</tr>
+						<tr>
+							<td class="notGrid2"><a onclick="startSpecificGame(10, 10, 10, 'easy')">Beginner</a></td>
+							<td class="notGrid2"><i>10 &times; 10, 10 nukes</i></td>
+						</tr>
+						<tr>
+							<td class="notGrid2"><a onclick="startSpecificGame(18, 18, 40, 'med')">Intermediate</a></td>
+							<td class="notGrid2"><i>18 &times; 18, 40 nukes</i></td>
+						</tr>
+						<tr>
+							<td class="notGrid2"><a onclick="startSpecificGame(25, 18, 99, 'hard')">Expert</a></td>
+							<td class="notGrid2"><i>25 &times; 18, 99 nukes</i></td>
+						</tr>
+					</table>
+				</td>
+				<td class='hasBorder'>
+					<table>
+						<tr>
+							<th colspan="2">Custom</th>
+						</tr>
+						<tr>
+							<td class="notGrid"><span class='bigger'>Width:</span></td>
+							<td class="notGrid"><input type="text" id="width" value="25" autocomplete="off" size="2" maxlength="2"></td>
+						</tr>
+						<tr>
+							<td class="notGrid"><span class='bigger'>Height:<span></td>
+							<td class="notGrid"><input type="text" id="height" value="18" autocomplete="off" size="2" maxlength="2"></td>
+						</tr>
+						<tr>
+							<td class="notGrid"><span class='bigger'>Mines:</span</td>
+							<td class="notGrid"><input type="text" id="mineCount" value="99" autocomplete="off" size="4" maxlength="4"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table class='noBorder'>
+			<tr>
+				<td><div class='left' id='bombs'>99 Bombs Remaining</div></td>
+				<td><button onclick="startGame()">Custom Start!</button></td>
+				<td><div class='right'>Time &nbsp;<span class='mono' id='timer'>00:00:00.0</span></div></td>
+			</tr>
+		</table>
+		<p id='winlose'><span class='playing'>Don't hit a bomb!</span></p>
+		<br>
+		<div id='grid' class="mainGameGrid" oncontextmenu="return false"></div>
+		<h1>Statistics</h1>
+			<table>
+				<tr>
+					<th colspan="2" class="rightdashed">This Game</th>
+					<th colspan="2">All time</th>
+				</tr>
+				<tr>
+					<td class="notGrid"><span class='bigger'>Percentage Bombs</span></td>
+					<td class="notGrid rightdashed"><span class='bigger' id='bombPercent'>20.63% Bombs</span></td>
+					<td class="notGrid"><span class='bigger'>Fastest Beginner</span></td>
+					<td class="notGrid"><span class='bigger' id='beginnerBest'>99:59:59.9</span></td>
+				</tr>
+				<tr>
+					<td class="notGrid"><span class='bigger'>Squares per minute</span></td>
+					<td class="notGrid rightdashed"><span class='bigger' id='sqMin'>0.00 sq/min</span></td>
+					<td class="notGrid"><span class='bigger'>Fastest Intermediate</span></td>
+					<td class="notGrid"><span class='bigger' id='intermediateBest'>99:59:59.9</span></td>
+				</tr>
+				<tr>
+					<td class="notGrid"><span class='bigger'>Flag per minute</span></td>
+					<td class="notGrid rightdashed"><span class='bigger' id='flagMin'>0.00 flg/min</span></td>
+					<td class="notGrid"><span class='bigger'>Fastest Expert</span></td>
+					<td class="notGrid"><span class='bigger' id='expertBest'>99:59:59.9</span></td>
+				</tr>
+			</table>
+			<br>
+			<button onclick="resetTimes()">Reset Times</button>
+	</body>
+	
+	<script src="nukeSweeper.js"></script>
+</html>

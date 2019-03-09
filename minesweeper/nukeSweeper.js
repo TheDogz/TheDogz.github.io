@@ -4,9 +4,17 @@ var incTimer, gridHeight, gridWidth, userBombTotal, gridType;
 var firstClick = true;
 var unopenedSquare = "<img src='uncovered.png' alt='?' height='30px'";
 var openedSquare = [
-	"<img src='s0.png' alt='0' height='30px'>", "<img src='s1.png' alt='1' height='30px'>", "<img src='s2.png' alt='2' height='30px'>", 
-	"<img src='s3.png' alt='3' height='30px'>", "<img src='s4.png' alt='4' height='30px'>", "<img src='s5.png' alt='5' height='30px'>", 
-	"<img src='s6.png' alt='6' height='30px'>", "<img src='s7.png' alt='7' height='30px'>", "<img src='s8.png' alt='8' height='30px'>"
+	"<img src='s0.png' alt='0' height='30px'>", "<img src='n1.png' alt='1' height='30px'>", "<img src='n2.png' alt='2' height='30px'>", 
+	"<img src='n3.png' alt='3' height='30px'>", "<img src='n4.png' alt='4' height='30px'>", "<img src='n5.png' alt='5' height='30px'>", 
+	"<img src='n6.png' alt='6' height='30px'>", "<img src='n7.png' alt='7' height='30px'>", "<img src='n8.png' alt='8' height='30px'>", 
+	"<img src='n9.png' alt='9' height='30px'>", "<img src='n10.png' alt='10' height='30px'>", "<img src='n11.png' alt='11' height='30px'>", 
+	"<img src='n12.png' alt='12' height='30px'>", "<img src='n13.png' alt='13' height='30px'>", "<img src='n14.png' alt='14' height='30px'>", 
+	"<img src='n15.png' alt='15' height='30px'>", "<img src='n16.png' alt='16' height='30px'>", "<img src='n17.png' alt='17' height='30px'>", 
+	"<img src='n18.png' alt='18' height='30px'>", "<img src='n19.png' alt='19' height='30px'>", "<img src='n20.png' alt='20' height='30px'>", 
+	"<img src='n21.png' alt='21' height='30px'>", "<img src='n22.png' alt='22' height='30px'>", "<img src='n23.png' alt='23' height='30px'>", 
+	"<img src='n24.png' alt='24' height='30px'>", "<img src='n25.png' alt='25' height='30px'>", "<img src='n26.png' alt='26' height='30px'>", 
+	"<img src='n27.png' alt='27' height='30px'>", "<img src='n28.png' alt='29' height='30px'>", "<img src='n29.png' alt='29' height='30px'>", 
+	"<img src='n30.png' alt='30' height='30px'>", "<img src='n31.png' alt='31' height='30px'>", "<img src='n32.png' alt='32' height='30px'>"
 ]
 var bombSquare = "<img src='boom.png' alt='B' height='30px'>";
 var flagSquare = "<img src='flagged.png' alt='&Delta;' height='30px'";
@@ -17,8 +25,8 @@ var bestTimes = {
 	hard: 359999.9
 }
 
-if (JSON.parse(localStorage.getItem("minesweeperSaveTimes")) !== null) {loadTimes();}
-startSpecificGame(30, 16, 99, 'hard');
+if (JSON.parse(localStorage.getItem("nukesweeperSaveTimes")) !== null) {loadTimes();}
+startSpecificGame(25, 18, 99, 'hard');
 
 function saveTimes() {
 	var save = {
@@ -26,11 +34,11 @@ function saveTimes() {
 		m: bestTimes.med,
 		h: bestTimes.hard,
 	}
-	localStorage.setItem("minesweeperSaveTimes",JSON.stringify(save));
+	localStorage.setItem("nukesweeperSaveTimes",JSON.stringify(save));
 }
 
 function loadTimes() {
-	var savegame = JSON.parse(localStorage.getItem("minesweeperSaveTimes"));
+	var savegame = JSON.parse(localStorage.getItem("nukesweeperSaveTimes"));
 	if (typeof savegame.e !== "undefined") bestTimes.easy = savegame.e;
 	if (typeof savegame.m !== "undefined") bestTimes.med = savegame.m;
 	if (typeof savegame.h !== "undefined") bestTimes.hard = savegame.h;
@@ -42,7 +50,7 @@ function loadTimes() {
 
 function resetTimes() {
 	if (confirm("Erase? This can't be undone.")) {
-		localStorage.removeItem("minesweeperSaveTimes")
+		localStorage.removeItem("nukesweeperSaveTimes")
 		bestTimes.easy = 359999.9;
 		bestTimes.med = 359999.9;
 		bestTimes.hard = 359999.9;
@@ -77,14 +85,14 @@ function startSpecificGame(width, height, bombs, type) {
 	clearInterval(incTimer);
 	gridType = type;
 	document.getElementById('timer').innerHTML = convertTime(time);
-	document.getElementById("winlose").innerHTML = "<span class='playing'>Don't hit a bomb!</span>"
+	document.getElementById("winlose").innerHTML = "<span class='playing'>Don't hit a nuke!</span>"
 	firstClick = true;
 	gridWidth = width;
 	gridHeight = height;
 	userBombTotal = bombs;
 	flagsLeft = userBombTotal;
-	if (gridWidth > 1 && gridHeight > 1 && userBombTotal > 0 && userBombTotal < gridWidth * gridHeight) {
-		document.getElementById('bombs').innerHTML = flagsLeft + " Bombs Remaining";
+	if (gridWidth > 3 && gridHeight > 3 && userBombTotal > 0 && userBombTotal < gridWidth * gridHeight) {
+		document.getElementById('bombs').innerHTML = flagsLeft + " Nukes Remaining";
 		document.getElementById('grid').innerHTML = drawGrid(gridWidth, gridHeight);
 	} else {
 		alert("Error: bad values");
@@ -95,7 +103,7 @@ function drawGrid(width, height) {
 	var table = "<table class='grid'><tr>";
 	var tableSection;
 	for (var j = 0; j < height; j++) {
-		table = table + "</tr><tr>"
+		table = table + "</tr><tr>";
 		for (var i = 0; i < width; i++) {
 			tableSection = "<td id='sq" + i + "-" + j + "'>" + unopenedSquare + " oncontextmenu='toggleFlag(" + i + ", " + j + ")'" + " onclick='openSquare(" + i + ", " + j + ")'" + "></td>"
 			table = table + tableSection
@@ -105,13 +113,13 @@ function drawGrid(width, height) {
 	openArray = generateOpenArray();
 	flagArray = generateOpenArray();
 	gridArray = generateArray();
-	document.getElementById('bombPercent').innerHTML = convert2dp(userBombTotal / (gridHeight * gridWidth) * 100) + "% Bombs";
+	document.getElementById('bombPercent').innerHTML = convert2dp(userBombTotal / (gridHeight * gridWidth) * 100) + "% Nukes";
 	return table;
 }
 
 function randomArrayPosOrder(x, y) {
 	let array = [];
-	let startSquare = toNumber(x, y)
+	let startSquare = toNumber(x, y);
 	//generate array
 	for (var k = 0; k < gridWidth * gridHeight; k++) {
 		array.push(k);
@@ -152,6 +160,12 @@ function randomArrayPosOrder(x, y) {
 			array.splice(toNumber(x+1, y-1), 2); //cf
 			array.splice(toNumber(x, y-1), 2); //be
 			array.splice(toNumber(x-1, y-1), 2); //ad
+		} else if (userBombTotal <= gridHeight*gridWidth-9 && startSquare >= 2 * gridWidth && startSquare < gridHeight*gridWidth-2*gridWidth && startSquare % gridWidth > 1 && startSquare % gridWidth < gridWidth - 2) {
+			array.splice(toNumber(x+2, y-2), 5); //AFKPU
+			array.splice(toNumber(x+1, y-2), 5); //BGLQV
+			array.splice(toNumber(x, y-2), 5); //CHMRW
+			array.splice(toNumber(x-1, y-2), 5); //DINSX
+			array.splice(toNumber(x-2, y-2), 5); //EJOTY
 		} else {
 			array.splice(toNumber(x+1, y-1), 3); //cfi
 			array.splice(toNumber(x, y-1), 3); //beh
@@ -191,16 +205,34 @@ function setBomb(bombCount) {
 
 function addBomb(yBomb, xBomb) {
 	gridArray[yBomb][xBomb] = "B";
-	if(checkSquare(yBomb-1, xBomb-1)) {gridArray[yBomb-1][xBomb-1]++;}
-	if(checkSquare(yBomb-1, xBomb)) {gridArray[yBomb-1][xBomb]++;}
-	if(checkSquare(yBomb-1, xBomb+1)) {gridArray[yBomb-1][xBomb+1]++;}
+	if(checkSquare(yBomb-2, xBomb-2)) {gridArray[yBomb-2][xBomb-2]++;}
+	if(checkSquare(yBomb-2, xBomb-1)) {gridArray[yBomb-2][xBomb-1]++;}
+	if(checkSquare(yBomb-2, xBomb)) {gridArray[yBomb-2][xBomb]++;}
+	if(checkSquare(yBomb-2, xBomb+1)) {gridArray[yBomb-2][xBomb+1]++;}
+	if(checkSquare(yBomb-2, xBomb+2)) {gridArray[yBomb-2][xBomb+2]++;}
 	
-	if(checkSquare(yBomb, xBomb-1)) {gridArray[yBomb][xBomb-1]++;}
-	if(checkSquare(yBomb, xBomb+1)) {gridArray[yBomb][xBomb+1]++;}
+	if(checkSquare(yBomb-1, xBomb-2)) {gridArray[yBomb-1][xBomb-2]++;}
+	if(checkSquare(yBomb-1, xBomb-1)) {gridArray[yBomb-1][xBomb-1] += 2;}
+	if(checkSquare(yBomb-1, xBomb)) {gridArray[yBomb-1][xBomb] += 2;}
+	if(checkSquare(yBomb-1, xBomb+1)) {gridArray[yBomb-1][xBomb+1] += 2;}
+	if(checkSquare(yBomb-1, xBomb+2)) {gridArray[yBomb-1][xBomb+2]++;}
 	
-	if(checkSquare(yBomb+1, xBomb-1)) {gridArray[yBomb+1][xBomb-1]++;}
-	if(checkSquare(yBomb+1, xBomb)) {gridArray[yBomb+1][xBomb]++;}
-	if(checkSquare(yBomb+1, xBomb+1)) {gridArray[yBomb+1][xBomb+1]++;}
+	if(checkSquare(yBomb, xBomb-2)) {gridArray[yBomb][xBomb-2]++;}
+	if(checkSquare(yBomb, xBomb-1)) {gridArray[yBomb][xBomb-1] += 2;}
+	if(checkSquare(yBomb, xBomb+1)) {gridArray[yBomb][xBomb+1] += 2;}
+	if(checkSquare(yBomb, xBomb+2)) {gridArray[yBomb][xBomb+2]++;}
+	
+	if(checkSquare(yBomb+1, xBomb-2)) {gridArray[yBomb+1][xBomb-2]++;}
+	if(checkSquare(yBomb+1, xBomb-1)) {gridArray[yBomb+1][xBomb-1] += 2;}
+	if(checkSquare(yBomb+1, xBomb)) {gridArray[yBomb+1][xBomb] += 2;}
+	if(checkSquare(yBomb+1, xBomb+1)) {gridArray[yBomb+1][xBomb+1] += 2;}
+	if(checkSquare(yBomb+1, xBomb+2)) {gridArray[yBomb+1][xBomb+2]++;}
+	
+	if(checkSquare(yBomb+2, xBomb-2)) {gridArray[yBomb+2][xBomb-2]++;}
+	if(checkSquare(yBomb+2, xBomb-1)) {gridArray[yBomb+2][xBomb-1]++;}
+	if(checkSquare(yBomb+2, xBomb)) {gridArray[yBomb+2][xBomb]++;}
+	if(checkSquare(yBomb+2, xBomb+1)) {gridArray[yBomb+2][xBomb+1]++;}
+	if(checkSquare(yBomb+2, xBomb+2)) {gridArray[yBomb+2][xBomb+2]++;}
 }
 	
 function toggleFlag(x, y) {
@@ -208,12 +240,12 @@ function toggleFlag(x, y) {
 	if (flagArray[y][x] == false && openArray[y][x] == false) {
 		flagArray[y][x] = true;
 		flagsLeft--;
-		document.getElementById('bombs').innerHTML = flagsLeft + " Bombs Remaining";
+		document.getElementById('bombs').innerHTML = flagsLeft + " Nukes Remaining";
 		document.getElementById(tempId).innerHTML = flagSquare + " oncontextmenu='toggleFlag(" + x + ", " + y + ")'" + " onclick='openSquare(" + x + ", " + y + ")'" + ">";
 	} else if (flagArray[y][x] && openArray[y][x] == false) {
 		flagArray[y][x] = false;
 		flagsLeft++;
-		document.getElementById('bombs').innerHTML = flagsLeft + " Bombs Remaining";
+		document.getElementById('bombs').innerHTML = flagsLeft + " Nukes Remaining";
 		document.getElementById(tempId).innerHTML = unopenedSquare + " oncontextmenu='toggleFlag(" + x + ", " + y + ")'" + " onclick='openSquare(" + x + ", " + y + ")'" + ">";
 	}
 	return false; //prevent context menu from opening when square is flagged
@@ -223,7 +255,7 @@ function forceToggleFlag(x, y) {
 	let tempId = "sq" + x + "-" + y;
 	flagArray[y][x] = true;
 	flagsLeft--;
-	document.getElementById('bombs').innerHTML = flagsLeft + " Bombs Remaining";
+	document.getElementById('bombs').innerHTML = flagsLeft + " Nukes Remaining";
 	document.getElementById(tempId).innerHTML = flagSquare + ">";
 }
 
@@ -335,7 +367,7 @@ function checkWin() {
 		console.log("win");
 		clearInterval(incTimer);
 		document.getElementById('sqMin').innerHTML = convert2dp(calcOpen() / time * 60) + "/min";
-		document.getElementById("winlose").innerHTML = "<span class='win'>You swept the mines!</span>"
+		document.getElementById("winlose").innerHTML = "<span class='win'>You swept the nukes!</span>"
 		for (var i = 0; i < gridHeight*gridWidth; i++) {
 		let tempX = toXPos(i);
 		let tempY = toYPos(i);
@@ -371,17 +403,48 @@ function checkZeros() {
 	for (var i = 0; i < gridHeight * gridWidth; i++) {
 		let x0 = toXPos(i);
 		let y0 = toYPos(i);
-		if (gridArray[y0][x0] == 0 && openArray[y0][x0] == true) {
-			if(checkoSquare(y0-1, x0-1)) {quickOpen(y0-1, x0-1); if(gridArray[y0-1][x0-1] == 0) {zeroFound = true;}}
-			if(checkoSquare(y0-1, x0)) {quickOpen(y0-1, x0); if(gridArray[y0-1][x0] == 0) {zeroFound = true;}}
-			if(checkoSquare(y0-1, x0+1)) {quickOpen(y0-1, x0+1); if(gridArray[y0-1][x0+1] == 0) {zeroFound = true;}}
+		if (gridArray[y0][x0] == 1 && openArray[y0][x0] == true) {
+			if(checkoSquare(y0-1, x0-1)) {quickOpen(y0-1, x0-1); if(gridArray[y0-1][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0)) {quickOpen(y0-1, x0); if(gridArray[y0-1][x0] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0+1)) {quickOpen(y0-1, x0+1); if(gridArray[y0-1][x0+1] <= 1) {zeroFound = true;}}
 			
-			if(checkoSquare(y0, x0-1)) {quickOpen(y0, x0-1); if(gridArray[y0][x0-1] == 0) {zeroFound = true;}}
-			if(checkoSquare(y0, x0+1)) {quickOpen(y0, x0+1); if(gridArray[y0][x0+1] == 0) {zeroFound = true;}}
+			if(checkoSquare(y0, x0-1)) {quickOpen(y0, x0-1); if(gridArray[y0][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0, x0+1)) {quickOpen(y0, x0+1); if(gridArray[y0][x0+1] <= 1) {zeroFound = true;}}
 			
-			if(checkoSquare(y0+1, x0-1)) {quickOpen(y0+1, x0-1); if(gridArray[y0+1][x0-1] == 0) {zeroFound = true;}}
-			if(checkoSquare(y0+1, x0)) {quickOpen(y0+1, x0); if(gridArray[y0+1][x0] == 0) {zeroFound = true;}}
-			if(checkoSquare(y0+1, x0+1)) {quickOpen(y0+1, x0+1); if(gridArray[y0+1][x0+1] == 0) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0-1)) {quickOpen(y0+1, x0-1); if(gridArray[y0+1][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0)) {quickOpen(y0+1, x0); if(gridArray[y0+1][x0]<= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0+1)) {quickOpen(y0+1, x0+1); if(gridArray[y0+1][x0+1] <= 1) {zeroFound = true;}}
+			
+			
+		} else if (gridArray[y0][x0] == 0 && openArray[y0][x0] == true) {
+			if(checkoSquare(y0-2, x0-2)) {quickOpen(y0-2, x0-2); if(gridArray[y0-2][x0-2] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-2, x0-1)) {quickOpen(y0-2, x0-1); if(gridArray[y0-2][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-2, x0)) {quickOpen(y0-2, x0); if(gridArray[y0-2][x0] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-2, x0+1)) {quickOpen(y0-2, x0+1); if(gridArray[y0-2][x0+1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-2, x0+2)) {quickOpen(y0-2, x0+2); if(gridArray[y0-2][x0+2] <= 1) {zeroFound = true;}}
+			
+			if(checkoSquare(y0-1, x0-2)) {quickOpen(y0-1, x0-2); if(gridArray[y0-1][x0-2] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0-1)) {quickOpen(y0-1, x0-1); if(gridArray[y0-1][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0)) {quickOpen(y0-1, x0); if(gridArray[y0-1][x0] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0+1)) {quickOpen(y0-1, x0+1); if(gridArray[y0-1][x0+1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0-1, x0+2)) {quickOpen(y0-1, x0+2); if(gridArray[y0-1][x0+2] <= 1) {zeroFound = true;}}
+			
+			if(checkoSquare(y0, x0-2)) {quickOpen(y0, x0-2); if(gridArray[y0][x0-2] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0, x0-1)) {quickOpen(y0, x0-1); if(gridArray[y0][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0, x0+1)) {quickOpen(y0, x0+1); if(gridArray[y0][x0+1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0, x0+2)) {quickOpen(y0, x0+2); if(gridArray[y0][x0+2] <= 1) {zeroFound = true;}}
+			
+			if(checkoSquare(y0+1, x0-2)) {quickOpen(y0+1, x0-2); if(gridArray[y0+1][x0-2] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0-1)) {quickOpen(y0+1, x0-1); if(gridArray[y0+1][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0)) {quickOpen(y0+1, x0); if(gridArray[y0+1][x0]<= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0+1)) {quickOpen(y0+1, x0+1); if(gridArray[y0+1][x0+1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+1, x0+2)) {quickOpen(y0+1, x0+2); if(gridArray[y0+1][x0+2] <= 1) {zeroFound = true;}}
+			
+			if(checkoSquare(y0+2, x0-2)) {quickOpen(y0+2, x0-2); if(gridArray[y0+2][x0-2] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+2, x0-1)) {quickOpen(y0+2, x0-1); if(gridArray[y0+2][x0-1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+2, x0)) {quickOpen(y0+2, x0); if(gridArray[y0+2][x0]<= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+2, x0+1)) {quickOpen(y0+2, x0+1); if(gridArray[y0+2][x0+1] <= 1) {zeroFound = true;}}
+			if(checkoSquare(y0+2, x0+2)) {quickOpen(y0+2, x0+2); if(gridArray[y0+2][x0+2] <= 1) {zeroFound = true;}}
 		}
 	}
 	
@@ -389,7 +452,6 @@ function checkZeros() {
 		checkZeros();
 	}
 }
-
 function convertTime(num) {
 	let hour = Math.floor(num / 3600);
 	let minute = Math.floor((num - hour * 3600) / 60)
