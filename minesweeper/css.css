@@ -24,16 +24,11 @@ a:visited {
 .link {
 	text-align: center;
 	color: white;
-	font-size: 175%;
+	font-size: 200%;
 }
 
 .link:hover {
-	text-decoration: underline;
 	cursor: pointer;
-}
-
-a:visited {
-	color: white;	
 }
 
 button {
