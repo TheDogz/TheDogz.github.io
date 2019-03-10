@@ -162,3 +162,7 @@ input {
 .rightdashed {
 	border-right: dashed 3px white;
 }
+
+a{color: white;}
+a:visited{color: white;}
+a:hover{color: white;}
