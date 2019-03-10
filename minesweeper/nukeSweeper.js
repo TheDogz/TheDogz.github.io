@@ -160,7 +160,7 @@ function randomArrayPosOrder(x, y) {
 			array.splice(toNumber(x+1, y-1), 2); //cf
 			array.splice(toNumber(x, y-1), 2); //be
 			array.splice(toNumber(x-1, y-1), 2); //ad
-		} else if (userBombTotal <= gridHeight*gridWidth-9 && startSquare >= 2 * gridWidth && startSquare < gridHeight*gridWidth-2*gridWidth && startSquare % gridWidth > 1 && startSquare % gridWidth < gridWidth - 2) {
+		} else if (userBombTotal <= gridHeight*gridWidth-25 && startSquare >= 2 * gridWidth && startSquare < gridHeight*gridWidth-2*gridWidth && startSquare % gridWidth > 1 && startSquare % gridWidth < gridWidth - 2) {
 			array.splice(toNumber(x+2, y-2), 5); //AFKPU
 			array.splice(toNumber(x+1, y-2), 5); //BGLQV
 			array.splice(toNumber(x, y-2), 5); //CHMRW

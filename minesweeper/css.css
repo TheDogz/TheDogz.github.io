@@ -17,6 +17,25 @@ a:hover {
 	cursor: pointer;
 }
 
+a:visited {
+	color: white;
+}
+
+.link {
+	text-align: center;
+	color: white;
+	font-size: 175%;
+}
+
+.link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+:visited {
+	color: white;	
+}
+
 button {
 	background-color: #222222;
 	font-size: 110%;
