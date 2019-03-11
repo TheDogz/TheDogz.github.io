@@ -24,6 +24,11 @@ var bestTimes = {
 	med: 359999.9,
 	hard: 359999.9
 }
+var statistic = {
+	played: 0,
+	lose: 0,
+	win: 0
+}
 
 if (JSON.parse(localStorage.getItem("nukesweeperSaveTimes")) !== null) {loadTimes();}
 startSpecificGame(25, 18, 99, 'hard');
@@ -33,6 +38,9 @@ function saveTimes() {
 		e: bestTimes.easy,
 		m: bestTimes.med,
 		h: bestTimes.hard,
+		played: statistic.played,
+		win: statistic.win,
+		lose: statistic.lose
 	}
 	localStorage.setItem("nukesweeperSaveTimes",JSON.stringify(save));
 }
@@ -42,6 +50,10 @@ function loadTimes() {
 	if (typeof savegame.e !== "undefined") bestTimes.easy = savegame.e;
 	if (typeof savegame.m !== "undefined") bestTimes.med = savegame.m;
 	if (typeof savegame.h !== "undefined") bestTimes.hard = savegame.h;
+	
+	if (typeof savegame.played !== "undefined") statistic.played = savegame.played;
+	if (typeof savegame.lose !== "undefined") statistic.lose = savegame.lose;
+	if (typeof savegame.win !== "undefined") statistic.win = savegame.win;
 	
 	document.getElementById('beginnerBest').innerHTML = convertTime(bestTimes.easy);
 	document.getElementById('intermediateBest').innerHTML = convertTime(bestTimes.med);
@@ -75,6 +87,7 @@ function startGame() {
 	if (gridWidth > 1 && gridHeight > 1 && userBombTotal > 0 && userBombTotal < gridWidth * gridHeight) {
 		document.getElementById('bombs').innerHTML = flagsLeft + " Bombs Remaining";
 		document.getElementById('grid').innerHTML = drawGrid(gridWidth, gridHeight);
+		statistic.played++
 	} else {
 		alert("Error: bad values");
 	}
@@ -94,6 +107,7 @@ function startSpecificGame(width, height, bombs, type) {
 	if (gridWidth > 3 && gridHeight > 3 && userBombTotal > 0 && userBombTotal < gridWidth * gridHeight) {
 		document.getElementById('bombs').innerHTML = flagsLeft + " Nukes Remaining";
 		document.getElementById('grid').innerHTML = drawGrid(gridWidth, gridHeight);
+		statistic.played++
 	} else {
 		alert("Error: bad values");
 	}
@@ -332,6 +346,8 @@ function openSquare(x, y) {
 }
 
 function loseGame() {
+	statistic.lose++;
+	saveTimes();
 	console.log("lose");
 	clearInterval(incTimer);
 	document.getElementById('sqMin').innerHTML = "<span style='color: #aaaaaa;'>" + convert2dp(calcOpen() / time * 60) + "/min</span>";
@@ -385,8 +401,9 @@ function checkWin() {
 			bestTimes.hard = time;
 			document.getElementById('expertBest').innerHTML = convertTime(bestTimes.hard);
 		}
+		}
+		statistic.win++
 		saveTimes();
-	}
 	}
 }
 
