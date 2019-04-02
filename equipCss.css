@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Boogaloo');
+body {
+	background-color: #333333;
+	color: white;
+	font-family: 'Averia Sans Libre', sans-serif;
+	padding-right: 1.5%;
+	padding-left: 1.5%;
+}
+
+h1{
+	font-family: 'Boogaloo', cursive;
+	text-align: center;
+	font-size: 400%
+}
+
+h2{
+	font-family: 'Boogaloo', cursive;
+	font-size: 200%
+}
+
+nav {
+	position: fixed;
+	margin: 5% auto;
+	left: 0;
+	right: 0;
+	bottom: -80px;
+	color: white;
+	text-align: center;
+}
+
+input {
+	text-align: center;
+}
+
+a{color: white;}
+a:visited{color: white;}
+
+.right-align{
+	text-align: right;
+}
+
+.center{margin: auto;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.pad{padding-right: 30%;}
+
+h3{font-family: 'Boogaloo', cursive;}
+
+.text{font-family: 'Averia Sans Libre', sans-serif;}
+
+input[type="text"]{
+	background-color: #333333;
+	color: white;
+}
+
+.warning {color: red;}
+
+.a {color: #ff3f00;}
+.b {color: #ff7f00;}
+.g {color: #ffb200;}
+.d {color: #ffd800;}
+.epsi {color: #f6ff00;}
+.z {color: #b2ff00;}
+.eta {color: #6eff00;}
+.t {color: #00ff00;}
+.i {color: #00e500;}
+.k {color: #00cc00;}
+.l {color: #00cc62;}
+.m {color: #00cc95;}
+.n {color: #00ccbb;}
+.x{color: #00e5d2;}
+.omi{color: #00ffe9;}
+.pi{color: #00edff;}
+.r{color: #00c3ff;}
+.s{color: #0094ff;}
+.tau{color: #1984ff;}
+.u{color: #3262ff;}
+.phi{color: #6668ff;}
+.c{color: #bc99ff;}
+.psi{color: #ddccff;}
+.omega{color: #f1ebff;}
+
+.myth {
+	color: red;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+	animation-name: rainbow;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+}
+
+td.top {vertical-align: top;}
+table, td {padding: 5px}
+
+button {
+	display: block; 
+	margin: 0 auto;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rainbow {
+	0%   {color: red;}
+	20%  {color: yellow;}
+	40%  {color: lime;}
+	50% {color: aqua;}
+	70% {color: blue;}
+	85% {color: magenta;}
+	100% {color: red;}
+}
+
+@keyframes rainbow {
+	0%   {color: red;}
+	20%  {color: yellow;}
+	40%  {color: lime;}
+	50% {color: aqua;}
+	70% {color: blue;}
+	85% {color: magenta;}
+	100% {color: red;}
+}
