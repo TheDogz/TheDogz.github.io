@@ -309,6 +309,8 @@ function openBoxes() {
 			contents: "<b class='myth'>Cone of Shame - Everything from lootboxes doubled* (500BT)</b>"
 		}
 	}
+
+	var legnedaryOutcome = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5];
 	
 	/**Variable Declerations*/
 	var d100;
@@ -320,6 +322,7 @@ function openBoxes() {
 	var epicItemArray = [];
 	var legendaryItemArray = [];
 	var collectArray = [];
+	var collectTot = [0, 0, 0, 0, 0, 0];
 	var total = 0;
 	var cBox = 0;
 	var uBox = 0;
@@ -359,10 +362,10 @@ function openBoxes() {
 		if(Math.random() < upgradeProb[betaLevel]) {
 			if(d100 >= common.d100m.min){
 				item = (common.d100m.contents);
-				collectArray.push(item);	
+				collectArray.push(item);
 			} else if (d100 >= common.d100e.min){
 				item = (uncommon.d100l.contents[d25]);
-				collectArray.push(item);
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if (d100 >= common.d100r.min){
 				item = (common.d100e.contents[d25]);
 				total = total + common.d100e.value[d25];
@@ -420,13 +423,11 @@ function openBoxes() {
 				collectArray.push(item);
 			} else if(d100 >= uncommon.d100l.min){
 				item = (uncommon.d100l.contents[d25]);
-				collectArray.push(item);
-				collectArray.push(item);
 				uncommonItemArray.push(item);
+				collectTot[legnedaryOutcome[d25]]+=2;
 			} else if(d100 >= uncommon.d100e.min){
 				item = (uncommon.d100l.contents[d25]);
-				collectArray.push(item);
-				
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= uncommon.d100r.min){
 				item = (uncommon.d100e.contents[d25]);
 				total = total + uncommon.d100e.value[d25];
@@ -453,8 +454,7 @@ function openBoxes() {
 				
 			} else if(d100 >= uncommon.d100l.min){
 				item = (uncommon.d100l.contents[d25]);
-				collectArray.push(item);
-				
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= uncommon.d100e.min){
 				item = (uncommon.d100e.contents[d25]);
 				total = total + uncommon.d100e.value[d25];
@@ -492,14 +492,13 @@ function openBoxes() {
 			if(d100 >= rare.d100m.min){
 				item = (rare.d100m.contents);
 				collectArray.push(item);
-				collectArray.push(item);
 				rareItemArray.push(item);
+			} else if(d100 >= rare.d100l.min){
+				item = (rare.d100l.contents[d25]);
+				collectTot[legnedaryOutcome[d25]]+=2;
 			} else if(d100 >= rare.d100e.min){
 				item = (rare.d100l.contents[d25]);
-				collectArray.push(item);	
-			} else if(d100 >= rare.d100e.min){
-				item = (rare.d100l.contents[d25]);
-				collectArray.push(item);
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= rare.d100r.min){
 				item = (rare.d100e.contents[d25]);
 				total = total + rare.d100e.value[d25];
@@ -527,8 +526,7 @@ function openBoxes() {
 				
 			} else if(d100 >= rare.d100l.min){
 				item = (rare.d100l.contents[d25]);
-				collectArray.push(item);
-				
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= rare.d100e.min){
 				item = (rare.d100e.contents[d25]);
 				total = total + rare.d100e.value[d25];
@@ -566,21 +564,18 @@ function openBoxes() {
 		if(Math.random() < upgradeProb[betaLevel]) {
 			if(d100 >= epic.d100m.min){
 				item = (epic.d100m.contents);
-				collectArray.push(item);
 			} else if(d100 >= epic.d100l.min){
 				item = (epic.d100l.contents[d25]);
-				collectArray.push(item);
-				collectArray.push(item);
 				epicItemArray.push(item);
+				collectTot[legnedaryOutcome[d25]]+=2;
 			} else if(d100 >= epic.d100e.min){
 				item = (epic.d100l.contents[d25]);
-				collectArray.push(item);
-				
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= epic.d100r.min){
 				item = (epic.d100e.contents[d25]);
 				total = total + epic.d100e.value[d25];
 				if (d25 == 23) {
-					collectArray.push(item);
+					collectTot[0]++;
 				}
 				lBox = lBox + epic.d100e.lBox[d25];
 				
@@ -605,13 +600,12 @@ function openBoxes() {
 				
 			} else if(d100 >= epic.d100l.min){
 				item = (epic.d100l.contents[d25]);
-				collectArray.push(item);
-				
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= epic.d100e.min){
 				item = (epic.d100e.contents[d25]);
 				total = total + epic.d100e.value[d25];
 				if (d25 == 23) {
-					collectArray.push(item);
+					collectTot[0]++;
 				}
 				lBox = lBox + epic.d100e.lBox[d25];
 				
@@ -649,13 +643,13 @@ function openBoxes() {
 				collectArray.push(item);
 			} else if(d100 >= legendary.d100l.min){
 				item = (legendary.d100l.contents[d25]);
-				collectArray.push(item);
-				collectArray.push(item);
+
 				legendaryItemArray.push(item);
+				collectTot[legnedaryOutcome[d25]]+=2;
 			} else if(d100 >= legendary.d100e.min){
 				item = (legendary.d100l.contents[d25]);
-				collectArray.push(item);
-				
+
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= legendary.d100r.min){
 				item = (legendary.d100e.contents[d25]);
 				total = total + legendary.d100e.value[d25];
@@ -669,8 +663,8 @@ function openBoxes() {
 				
 			} else if(d100 >= legendary.d100l.min){
 				item = (legendary.d100l.contents[d25]);
-				collectArray.push(item);
-				
+
+				collectTot[legnedaryOutcome[d25]]++;
 			} else if(d100 >= legendary.d100e.min){
 				item = (legendary.d100e.contents[d25]);
 				total = total + legendary.d100e.value[d25];
@@ -722,6 +716,15 @@ function openBoxes() {
 	for (j = 0; j < legendaryItemArray.length; j++) {
 	   itemList = "<li>" + legendaryItemArray[j] + "</li>";
 	   document.getElementById("legendary-items").innerHTML += itemList;
+	}
+	
+	let collectableArrat = [" Sugar (No-reroll)", " Sugar", " Peanut Butter", " Gingerbread", " Chocolate", " Dog"]; 
+	
+	for (var k = 0; k < collectableArrat.length; k++) {
+		if (collectTot[k] != 0) {
+		   collectList = "<br>" + collectTot[k] + collectableArrat[k];
+		   document.getElementById("collectSummary").innerHTML += collectList;
+	   }
 	}
 	
 	for (var k = 0; k < collectArray.length; k++) {
@@ -971,7 +974,7 @@ function openBoxes() {
 				<h4 class='blue' id='rBoxes'>0 Rare Boxes</h4>
 				<h4 class='red' id='eBoxes'>0 Epic Boxes</h4>
 				<h4 class='yellow' id='lBoxes'>0 Legendary Boxes</h4>
-				<h4 id="collectSummary" class="text">Collectables: None</h4>
+				<h4><span id="collectSummary" class="text yellow">Collectables: None</span></h4>
 			<div>
 			
 		</div>
