@@ -35,6 +35,7 @@ function craftStones() {
 	kappaLevel = document.getElementById("kappaRune").value;
 	iotaLevel = document.getElementById("iotaRune").value;
 	alphaLevel = document.getElementById("alphaRune").value;
+	autoSell = document.getElementById("autoSell").checked;
 	var rStone = document.getElementById("a").value;
 	for (let s = 0; s < rStone; s++) {
 		openAlphaStone();
@@ -51,6 +52,12 @@ function craftStones() {
 	for (let s = 0; s < rStone; s++) {
 		openKappaStone();
 	}
+	
+	if (autoSell) {
+		killMythics();
+		console.log("sold");
+	}
+	
 	mergeRunes();
 	writeOutcome();
 }
@@ -177,6 +184,17 @@ function twoMythicProbGet(mn) {
 		case 0: return random(2) + mn; 
 		case 1: return random(mn);
 		default: sendError();
+	}
+}
+
+function killMythics() {
+	var totMyths = 0;
+	for (let m = 0; m < 10; m++) {
+		totMyths += mythicArray[m];
+	}
+	
+	for (let m = 0; m < totMyths; m++) {
+		itemArray[17][random(5)]++;
 	}
 }
 
