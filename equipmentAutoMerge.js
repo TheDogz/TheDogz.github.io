@@ -194,7 +194,7 @@ function killMythics() {
 	}
 	
 	for (let m = 0; m < totMyths; m++) {
-		itemArray[17][random(5)]++;
+		itemArray[14][random(5)]++;
 	}
 }
 
@@ -203,7 +203,7 @@ function random(randMax) {
 }
 
 function mergeRunes() {
-	var mergeReqArray = [5, 4, 4, 3, 3, 2];
+	var mergeReqArray = [10, 8, 7, 6, 5, 4];
 	var doubleMergeArray = [[1, 0], [0.98, 0], [0.95, 0], [0.9, 0], [0.86, 0], [0.82, 0]];
 	let mergeReq = mergeReqArray[iotaLevel]; 
 	let doubleReq = doubleMergeArray[kappaLevel]; 
