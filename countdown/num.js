@@ -37,7 +37,7 @@ function go() {
 	let mi = document.getElementById('mi').value;
 	let s = document.getElementById('s').value;
 	
-	if (isNaN(dh) || isNaN(dm) || isNaN(ds) || ds == '' || dm == '' || dh = '') {
+	if (isNaN(dh) || isNaN(dm) || isNaN(ds) || ds == '' || dm == '' || dh == '') {
 		if (isNaN(y) || isNaN(mo) || isNaN(d) || isNaN(h) || isNaN(mi) || isNaN(s)) {
 			return;
 		} else {
