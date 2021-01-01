@@ -2,11 +2,9 @@ const urlParameter = new URLSearchParams(window.location.search);
 const time = urlParameter.get('time');
 const FRAMERATE = 1000/60
 
-console.log(time);
-if (isNaN(time) || time == null) {
-	document.getElementById('select').style.display = 'table-cell';
-} else {
-	document.getElementById('clock').style.display = 'table-cell';
+if (!isNaN(time) && time !== null) {
+	document.getElementById('select').style.display = 'none';
+	document.getElementById('clock').style.display = 'block';
 	setInterval(function() {
 		timeInt = Math.round(parseInt(time, 10) / 10);
 		let d = timeInt - Math.round(new Date().getTime() / 10);
