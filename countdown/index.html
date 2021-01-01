@@ -6,7 +6,18 @@
 	</head>
 
 	<body>
-		<div><span id="stime">0</span><span id="hstime">.00</span></div>
+		<div style='display:none;' id='select'>
+			<input id='dh' type='text' maxlength='2' size='1'>:<input id='dm' type='text' maxlength='2' size='1'>:<input id='ds' type='text' maxlength='2' size='1'>
+			<br><br>
+			<input id='d' type='text' maxlength='2' size='1'>/<input id='mo' type='text' maxlength='2' size='1'>/<input id='y' type='text' maxlength='4' size='3'>
+			<input id='h' type='text' maxlength='2' size='1'>:<input id='mi' type='text' maxlength='2' size='1'>:<input id='s' type='text' maxlength='2' size='1'>
+			<br><br>
+			<button onclick='go()'>Go!</button>
+		</div>
+		
+		<div style='display:none;' id='clock'>
+			<span id="stime">0</span><span id="hstime">.00</span>
+		</div>
 		<script src="num.js"></script>
 	</body>
  </html>
